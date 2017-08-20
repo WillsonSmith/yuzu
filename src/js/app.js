@@ -76,7 +76,9 @@ var seed = Date.now();
 var numberOfStars = (window.innerWidth / 100) * 20;
 var stars = new stars_1["default"](c, numberOfStars, seed);
 window.addEventListener('resize', function () {
-    stars = new stars_1["default"](c, numberOfStars, seed);
+    window.requestAnimationFrame(function () {
+        stars = new stars_1["default"](c, numberOfStars, seed);
+    });
 });
 
 
