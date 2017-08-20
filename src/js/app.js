@@ -89,7 +89,7 @@ window.addEventListener('resize', function () {
 "use strict";
 
 exports.__esModule = true;
-var prng_1 = __webpack_require__(3);
+var prng_1 = __webpack_require__(2);
 var Star = (function () {
     function Star(randomSeed) {
         if (randomSeed === void 0) { randomSeed = Date.now(); }
@@ -144,8 +144,7 @@ exports["default"] = StarSheet;
 
 
 /***/ }),
-/* 2 */,
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

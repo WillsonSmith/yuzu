@@ -1,6 +1,8 @@
 body {
-  margin: 0;
   background: #22292C;
+  margin: 0;
+
+  font-family: sans-serif;
 }
 
 .star-sheet {
@@ -8,7 +10,52 @@ body {
   top: 0;
   left: 0;
   pointer-events: none;
+}
 
-  /* width: 100vw;
-  height: 100vh; */
+.details {
+  width: 90%;
+  margin: 10vh auto 0 auto;
+}
+
+.name {
+  text-align: center;
+}
+
+.top-billing {
+
+  --shadow-x-offset: 0.8vw;
+  --shadow-y-offset: 0.4vw;
+
+  color: #fff;
+  font-weight: 500;
+
+  font-size: 12vw;
+
+  > span:nth-child(1) {
+    text-shadow: var(--shadow-x-offset) var(--shadow-y-offset) #e74c3c;
+  }
+
+  > span:nth-child(2) {
+    text-shadow: var(--shadow-x-offset) var(--shadow-y-offset) #e67e22;
+  }
+
+  > span:nth-child(3) {
+    text-shadow: var(--shadow-x-offset) var(--shadow-y-offset) #f1c40f;
+  }
+
+  > span:nth-child(4) {
+    text-shadow: var(--shadow-x-offset) var(--shadow-y-offset) #2ecc71;
+  }
+
+  > span:nth-child(5) {
+    text-shadow: var(--shadow-x-offset) var(--shadow-y-offset) #3498db;
+  }
+
+  > span:nth-child(6) {
+    text-shadow: var(--shadow-x-offset) var(--shadow-y-offset) #9b59b6;
+  }
+
+  > span:nth-child(7) {
+    text-shadow: var(--shadow-x-offset) var(--shadow-y-offset) #5B3256;
+  }
 }
