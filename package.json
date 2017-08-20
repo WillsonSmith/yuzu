@@ -1,0 +1,14 @@
+{
+  "name": "PersonalSite",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Willson Smith",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^4.5.0",
+    "ts-loader": "^2.3.3",
+    "typescript": "^2.4.2",
+    "webpack": "^3.5.5"
+  },
+  "dependencies": {}
+}
