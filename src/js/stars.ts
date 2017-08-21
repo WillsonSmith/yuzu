@@ -9,10 +9,9 @@ interface CanvasStar {
 class Star {
   opacity: number;
   radius: number;
-  constructor(randomSeed = Date.now()) {
-    const seededRng = new Prng(randomSeed);
-    this.opacity = seededRng.nextFloat();
-    this.radius = Math.floor(seededRng.nextFloat() * 7) + 1;
+  constructor(seeded) {
+    this.opacity = seeded.nextFloat();
+    this.radius = Math.floor(seeded.nextFloat() * 7) + 1;
   }
 }
 
@@ -44,7 +43,7 @@ class StarSheet {
   }
 
   createStar():CanvasStar {
-    const star:Star = new Star(this.seed);
+    const star:Star = new Star(this.seededRng);
     return {
       star,
       properties: [
