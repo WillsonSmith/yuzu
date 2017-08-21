@@ -71,6 +71,13 @@
 
 exports.__esModule = true;
 var stars_1 = __webpack_require__(1);
+FontFaceOnload('Toronto Subway', {
+    success: function () {
+        Array.from(document.querySelectorAll('.top-billing')).forEach(function (node) { return node.classList.add('top-billing--fonts-loaded'); });
+    },
+    error: function () { },
+    timeout: 5000 // in ms. Optional, default is 10 seconds
+});
 var c = document.getElementById('stars');
 var seed = Date.now();
 var numberOfStars = (window.innerWidth / 100) * 20;
