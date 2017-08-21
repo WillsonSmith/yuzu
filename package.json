@@ -5,7 +5,8 @@
   "author": "Willson Smith",
   "license": "MIT",
   "scripts": {
-    "css": "postcss src/css/styles.css --output src/css/styles.c.css --watch"
+    "css": "postcss src/css/styles.css --output src/css/styles.c.css --watch",
+    "build": "sh buildscript.sh"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
