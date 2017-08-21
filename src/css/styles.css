@@ -1,12 +1,22 @@
+:root {
+  --shadow-x-offset: 0.8vw;
+  --shadow-y-offset: 0.4vw;
+}
+
+html {
+  font-size: 10px;
+}
+
 body {
   background: #22292C;
   margin: 0;
 
+  font-size: 1.6rem;
   font-family: sans-serif;
 }
 
 .star-sheet {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   pointer-events: none;
@@ -17,7 +27,6 @@ body {
 }
 
 .name {
-  margin: 0;
   text-align: center;
 }
 
@@ -29,12 +38,10 @@ body {
 }
 
 .top-billing {
-
-  --shadow-x-offset: 0.8vw;
-  --shadow-y-offset: 0.4vw;
-
   color: #fff;
   font-weight: 500;
+
+  margin: 0;
 
   font-size: 18vw;
   font-family: -apple-system,
@@ -80,6 +87,25 @@ body {
 
   > span:nth-child(7) {
     text-shadow: var(--shadow-x-offset) var(--shadow-y-offset) #5B3256;
+  }
+}
+
+.connections {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 5rem;
+
+  .connections__item {
+    background: #fff;
+    border-top: 3px solid #9b59b6;
+
+    padding: 0.8em;
+  }
+
+  svg {
+    width: 4.8rem;
+    height: 4.8rem;
   }
 }
 
