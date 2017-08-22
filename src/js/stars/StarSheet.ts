@@ -1,18 +1,9 @@
-import Prng from './helpers/prng';
+import Prng from '../helpers/prng';
+import Star from './star';
 
 interface CanvasStar {
   star: Star,
   properties: Array<number>,
-}
-
-
-class Star {
-  opacity: number;
-  radius: number;
-  constructor(opacity:number, radiusMultiplier:number) {
-    this.opacity = opacity;
-    this.radius = Math.floor(radiusMultiplier * 7) + 1;
-  }
 }
 
 class StarSheet {

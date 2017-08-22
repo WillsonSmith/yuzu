@@ -1,4 +1,4 @@
-import StarSheet from './stars';
+import StarSheet from './stars/StarSheet';
 
 interface fontFaceOptions {
     tolerance?: number;
