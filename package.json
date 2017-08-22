@@ -6,12 +6,15 @@
   "license": "MIT",
   "scripts": {
     "css": "postcss src/css/styles.css --output src/css/styles.c.css --watch",
-    "build": "sh buildscript.sh"
+    "build": "sh buildscript.sh",
+    "test": "mocha --opts mocha.opts && rm -rf test",
+    "test:auto": "mocha --opts mocha.opts --watch"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "cssnano": "^3.10.0",
     "eslint": "^4.5.0",
+    "mocha": "^3.5.0",
     "postcss": "^6.0.9",
     "postcss-cli": "^4.1.0",
     "postcss-cssnext": "^3.0.2",
@@ -20,6 +23,7 @@
     "postcss-nested": "^2.1.2",
     "sugarcss": "^1.0.3",
     "ts-loader": "^2.3.3",
+    "ts-node": "^3.3.0",
     "typescript": "^2.4.2",
     "webpack": "^3.5.5"
   },
