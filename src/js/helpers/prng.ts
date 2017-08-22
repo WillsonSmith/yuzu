@@ -5,11 +5,11 @@ class Prng {
     this.initSeed(seed);
   }
 
-  next() {
+  next():number {
     return this.seed = this.seed * 16807 % 2147483647;
   }
 
-  nextFloat() {
+  nextFloat():number {
     return (this.next() - 1) / 2147483646;
   }
 
