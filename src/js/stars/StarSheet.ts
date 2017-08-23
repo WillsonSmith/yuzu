@@ -10,11 +10,11 @@ class StarSheet {
   context: any;
   width: number;
   height: number;
-  canvas: HTMLInputElement;
+  canvas: HTMLCanvasElement;
   seed: number;
   seededRng: Prng;
 
-  constructor(canvas, numberOfStars, startSeed) {
+  constructor(canvas:HTMLCanvasElement, numberOfStars:number, startSeed:number) {
     this.seed = startSeed;
     this.seededRng = new Prng(this.seed);
     

@@ -1,5 +1,6 @@
 import 'mocha';
 import assert = require('assert');
+
 import Star from './Star';
 
 describe('Star', () => {
