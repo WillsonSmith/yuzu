@@ -1,5 +1,6 @@
 import 'mocha';
-import assert = require('assert');
+import * as sinon from 'sinon';
+import * as assert from 'assert';
 
 import StarSheet from './StarSheet';
 
@@ -9,6 +10,23 @@ describe('StarSheet', () => {
 
   beforeEach((done) => {
 
+    function buildContextFunction() {
+      const scale = sinon.spy();
+      const beginPath = sinon.spy();
+      const arc = sinon.spy();
+      const fill = sinon.spy();
+
+      return {
+        fillStyle: '',
+        scale,
+        beginPath,
+        arc,
+        fill,
+      }
+    }
+
+    const context = buildContextFunction();
+
     fakeCanvas = function() {
       return {
         get offsetWidth() { return parseInt(this.style.width, 10) },
@@ -17,20 +35,12 @@ describe('StarSheet', () => {
           width: '300px',
           height: '150px',
         },
-        getContext() {
-          return {
-            fillStyle: '',
-            scale(scaleX, scaleY) {},
-            beginPath() {},
-            arc() {},
-            fill() {},
-          }
-        }
+        getContext: () => context
       }
-    }
+    }();
 
     Stars = new StarSheet({
-      canvas:fakeCanvas() as any,
+      canvas:fakeCanvas as any,
       numberOfStars: 100,
       startSeed: 10,
       height: 500,
@@ -46,6 +56,13 @@ describe('StarSheet', () => {
       assert.equal(Stars.seed, 10);
       assert.equal(Stars.width, 500)
       assert.equal(Stars.height, 500)
+    });
+    
+    it('draws the stars', () => {
+      assert.equal(fakeCanvas.getContext().scale.callCount, 100)
+      assert.equal(fakeCanvas.getContext().beginPath.callCount, 100)
+      sinon.assert.called(fakeCanvas.getContext().arc)
+      sinon.assert.called(fakeCanvas.getContext().fill)
     });
   });
 });

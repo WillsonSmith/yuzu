@@ -5,12 +5,15 @@
   "author": "Willson Smith",
   "license": "MIT",
   "scripts": {
+    "webpack": "webpack --config webpack.config.js --watch",
     "css": "postcss src/css/styles.css --output src/css/styles.c.css --watch",
     "build": "sh buildscript.sh",
     "test": "mocha --opts mocha.opts && rm -rf test",
     "test:auto": "mocha --opts mocha.opts --watch"
   },
   "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/sinon": "^2.3.3",
     "autoprefixer": "^7.1.2",
     "cssnano": "^3.10.0",
     "eslint": "^4.5.0",
@@ -21,6 +24,7 @@
     "postcss-import": "^10.0.0",
     "postcss-loader": "^2.0.6",
     "postcss-nested": "^2.1.2",
+    "sinon": "^3.2.1",
     "sugarcss": "^1.0.3",
     "ts-loader": "^2.3.3",
     "ts-node": "^3.3.0",
