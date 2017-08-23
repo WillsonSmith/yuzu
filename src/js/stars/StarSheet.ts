@@ -6,6 +6,15 @@ interface CanvasStar {
   properties: Array<number>,
 }
 
+export interface ConstructorArgs {
+  canvas:HTMLCanvasElement,
+  numberOfStars:number,
+  startSeed:number,
+  width:number,
+  height:number,
+  ratio
+}
+
 class StarSheet {
   context: any;
   width: number;
@@ -14,17 +23,17 @@ class StarSheet {
   seed: number;
   seededRng: Prng;
 
-  constructor(canvas:HTMLCanvasElement, numberOfStars:number, startSeed:number) {
+  constructor({ canvas, numberOfStars, startSeed, width, height, ratio }:ConstructorArgs) {
     this.seed = startSeed;
     this.seededRng = new Prng(this.seed);
     
-    const pixelRatio = window.devicePixelRatio || 1;
+    const pixelRatio = ratio || 1;
     this.canvas = canvas;
-    canvas.width = window.innerWidth * pixelRatio;
-    canvas.height = window.innerHeight * pixelRatio;
+    canvas.width = width * pixelRatio;
+    canvas.height = height * pixelRatio;
 
-    canvas.style.width = `${window.innerWidth}px`;
-    canvas.style.height = `${window.innerHeight}px`;
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
 
     this.width = canvas.offsetWidth;
     this.height = canvas.offsetHeight;

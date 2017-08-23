@@ -21,12 +21,22 @@ FontFaceOnload('Toronto Subway', {
 });
 
 const canvas = document.getElementById('stars');
-const seed = Date.now();
+const startSeed = Date.now();
 const numberOfStars = (window.innerWidth / 100) * 20
-let stars = new StarSheet(canvas, numberOfStars, seed);
+
+const parameters = {
+  canvas: canvas as HTMLCanvasElement,
+  numberOfStars,
+  startSeed,
+  width: window.innerWidth as number,
+  height: window.innerHeight as number,
+  ratio: window.devicePixelRatio || 1,
+}
+
+let stars = new StarSheet(parameters);
 
 window.addEventListener('resize', () => {
   window.requestAnimationFrame(() => {
-    stars = new StarSheet(canvas, numberOfStars, seed);
+    stars = new StarSheet(parameters);
   });
 });
