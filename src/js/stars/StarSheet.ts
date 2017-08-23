@@ -26,7 +26,6 @@ class StarSheet {
   constructor({ canvas, numberOfStars, startSeed, width, height, ratio }:ConstructorArgs) {
     this.seed = startSeed;
     this.seededRng = new Prng(this.seed);
-    
     const pixelRatio = ratio || 1;
     this.canvas = canvas;
     canvas.width = width * pixelRatio;

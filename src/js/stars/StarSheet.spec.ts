@@ -9,23 +9,22 @@ describe('StarSheet', () => {
   let fakeCanvas = null;
 
   beforeEach((done) => {
-
     function buildContextFunction() {
       const scale = sinon.spy();
       const beginPath = sinon.spy();
       const arc = sinon.spy();
       const fill = sinon.spy();
 
-      return {
-        fillStyle: '',
-        scale,
-        beginPath,
-        arc,
-        fill,
+      return function() {
+        return {
+          fillStyle: '',
+          scale,
+          beginPath,
+          arc,
+          fill,
+        }
       }
-    }
-
-    const context = buildContextFunction();
+    };
 
     fakeCanvas = function() {
       return {
@@ -35,12 +34,12 @@ describe('StarSheet', () => {
           width: '300px',
           height: '150px',
         },
-        getContext: () => context
+        getContext: buildContextFunction(),
       }
     }();
 
     Stars = new StarSheet({
-      canvas:fakeCanvas as any,
+      canvas: fakeCanvas as any,
       numberOfStars: 100,
       startSeed: 10,
       height: 500,
@@ -57,12 +56,15 @@ describe('StarSheet', () => {
       assert.equal(Stars.width, 500)
       assert.equal(Stars.height, 500)
     });
-    
+
+    it('scales the canvas for pixel ratio', () => {
+      assert(Stars.context.scale.calledWith(2, 2));
+    })
+
     it('draws the stars', () => {
-      assert.equal(fakeCanvas.getContext().scale.callCount, 100)
-      assert.equal(fakeCanvas.getContext().beginPath.callCount, 100)
-      sinon.assert.called(fakeCanvas.getContext().arc)
-      sinon.assert.called(fakeCanvas.getContext().fill)
+     assert.equal(Stars.context.beginPath.callCount, 100)
+     assert.equal(Stars.context.arc.callCount, 100)
+     assert.equal(Stars.context.fill.callCount, 100)
     });
   });
 });
