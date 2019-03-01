@@ -5,16 +5,16 @@
   "author": "Willson Smith",
   "license": "MIT",
   "scripts": {
+    "watch": "parcel watch src/index.html",
     "webpack": "webpack --config webpack.config.js --watch",
     "css": "postcss src/css/styles.css --output src/css/styles.c.css --watch",
-    "build": "sh buildscript.sh",
+    "build": "parcel build src/index.html --out-dir build/",
     "test": "mocha --opts mocha.opts && rm -rf test",
     "test:auto": "mocha --opts mocha.opts --watch"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.42",
     "@types/sinon": "^2.3.3",
-    "autoprefixer": "^7.1.2",
     "cssnano": "^3.10.0",
     "eslint": "^4.5.0",
     "mocha": "^3.5.0",
@@ -31,5 +31,8 @@
     "typescript": "^2.4.2",
     "webpack": "^3.5.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "parcel-bundler": "^1.11.0",
+    "postcss-modules": "^1.4.1"
+  }
 }

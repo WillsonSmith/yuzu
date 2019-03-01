@@ -1,4 +1,5 @@
 node_modules/
-# src/fonts/licensed/
+dist/
 build/
 src/js/app.js
+.cache/

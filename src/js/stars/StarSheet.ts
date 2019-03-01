@@ -1,5 +1,5 @@
 import Prng from '../helpers/prng';
-import Star from './star';
+import Star from './Star';
 
 interface CanvasStar {
   star: Star,
