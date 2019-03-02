@@ -2,7 +2,7 @@
   "plugins": {
     "postcss-import": {},
     "postcss-nested": {},
-    "postcss-cssnext": {},
+    "postcss-preset-env": {},
     "cssnano": {},
   }
 }
