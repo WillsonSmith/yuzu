@@ -37,6 +37,10 @@ let stars = new StarSheet(parameters);
 
 window.addEventListener('resize', () => {
   window.requestAnimationFrame(() => {
-    stars = new StarSheet(parameters);
+    stars = new StarSheet({
+      ...parameters,
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
   });
 });
