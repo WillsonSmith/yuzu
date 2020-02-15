@@ -1,0 +1,7 @@
+[context.production]
+  command = "npm build"
+  publish = "build"
+
+[context.branch-deploy]
+  command = "npm build"
+  publish = "_site"
