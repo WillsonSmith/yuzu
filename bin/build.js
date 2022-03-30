@@ -6,10 +6,7 @@ import {
   entryPoints as jsEntry,
   outfile as jsOutfile,
 } from './javascript/build.js';
-import {
-  entryPoints as cssEntry,
-  outfile as cssOutfile,
-} from './javascript/build.js';
+import { entryPoints as cssEntry, outfile as cssOutfile } from './css/build.js';
 
 const [, , watchOrBuild, file] = process.argv;
 

@@ -1,0 +1,28 @@
+[w-des-sys] {
+  --text-size-half: calc(var(--text-size-base) / 2);
+  --text-size-half_lineheight: calc(var(--text-size-half) * 1.5);
+
+  --text-size-base: min(max(0.875rem, 4vw), 1rem);
+  --text-size-base_lineheight: calc(var(--text-size-base) * 1.5);
+
+  --text-size-double: calc(var(--text-size-base) * 2);
+  --text-size-double_lineheight: calc(var(--text-size-double) * 1.5);
+
+  --text-size-triple: calc(var(--text-size-base) * 3);
+  --text-size-triple_lineheight: calc(var(--text-size-triple) * 1.5);
+
+  --text-size-quadruple: calc(var(--text-size-base) * 4);
+  --text-size-quadruple_lineheight: calc(var(--text-size-quadruple) * 1.5);
+
+  --text-weight-light: 300;
+  --text-weight: 400;
+  --text-weight-medium: 500;
+  --text-weight-semibold: 600;
+  --text-weight-bold: 700;
+}
+
+@media screen and (min-width: 1000px) {
+  [w-des-sys] {
+    --text-size-another: 1.6rem;
+  }
+}
