@@ -50,6 +50,10 @@ const builds = {
       watch,
     });
   },
+  'design-system': async (watch = false) => {
+    // TODO: Build design-system
+    // pull in `system/**/*.css`, merge rules, output system.css
+  },
 };
 
 switch (watchOrBuild) {
