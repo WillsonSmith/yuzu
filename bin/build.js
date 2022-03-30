@@ -1,5 +1,7 @@
 import { build } from 'esbuild';
-import { copyFile } from 'fs/promises';
+import { copy } from 'fs-extra';
+import chokidar from 'chokidar';
+
 import {
   entryPoints as jsEntry,
   outfile as jsOutfile,
@@ -9,15 +11,31 @@ import { entryPoints as cssEntry, outfile as cssOutfile } from './css/index.js';
 const [, , watchOrBuild, file] = process.argv;
 
 const builds = {
-  static: (watch = false) => {},
-  html: (watch = false) => {
-    // TODO: watch array of static files and copy to web
-    copyFile('./index.html', './web/index.html');
+  static: async (watch = false) => {
+    copy('./assets/static', './web/assets/static');
+    if (!watch) return;
+    chokidar
+      .watch('./assets/static')
+      .on('change', (path) => {
+        copy(path, `./web/${path}`);
+      })
+      .on('add', (path) => {
+        copy(path, `./web/${path}`);
+      })
+      .on('unlink', (path) => {});
   },
-  js: (watch = false) => {
+  html: (watch = false) => {
+    copy('./index.html', './web/index.html');
+    if (!watch) return;
+    chokidar.watch('./index.html').on('change', () => {
+      copy('./index.html', './web/index.html');
+    });
+  },
+  js: async (watch = false) => {
     build({
       entryPoints: jsEntry,
       bundle: true,
+      format: 'esm',
       outfile: jsOutfile,
       minify: !watch,
       watch,
