@@ -1,6 +1,7 @@
 [w-des-sys] {
-  --spacing-half: calc(var(--spacing-base) / 2);
-  --spacing: 8px;
+  --spacing__base: 4px;
+  --spacing-half: var(--spacing__base);
+  --spacing: calc(var(--spacing__base) * 2);
   --spacing-double: calc(var(--spacing) * 2);
   --spacing-triple: calc(var(--spacing) * 3);
   --spacing-quadruple: calc(var(--spacing) * 4);
@@ -8,6 +9,6 @@
 
 @media screen and (min-width: 800px) {
   [w-des-sys] {
-    --spacing: 16px;
+    --spacing: var(--spacing__base * 4);
   }
 }
