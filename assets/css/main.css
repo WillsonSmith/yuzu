@@ -1,5 +1,2 @@
 @import 'system/text.css';
-
-p {
-  font-size: var(--text-size-base);
-}
+@import 'system/spacing.css';
