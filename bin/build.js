@@ -1,18 +1,17 @@
 import { build } from 'esbuild';
-
 import { copyFile } from 'fs/promises';
-
 import {
   entryPoints as jsEntry,
   outfile as jsOutfile,
-} from './javascript/build.js';
-import { entryPoints as cssEntry, outfile as cssOutfile } from './css/build.js';
+} from './javascript/index.js';
+import { entryPoints as cssEntry, outfile as cssOutfile } from './css/index.js';
 
 const [, , watchOrBuild, file] = process.argv;
 
 const builds = {
   static: (watch = false) => {},
   html: (watch = false) => {
+    // TODO: watch array of static files and copy to web
     copyFile('./index.html', './web/index.html');
   },
   js: (watch = false) => {
@@ -20,6 +19,7 @@ const builds = {
       entryPoints: jsEntry,
       bundle: true,
       outfile: jsOutfile,
+      minify: !watch,
       watch,
     });
   },
@@ -28,6 +28,7 @@ const builds = {
       entryPoints: cssEntry,
       bundle: true,
       outfile: cssOutfile,
+      minify: !watch,
       watch,
     });
   },
