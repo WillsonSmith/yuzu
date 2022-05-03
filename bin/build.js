@@ -12,7 +12,11 @@ const [, , watchOrBuild, file] = process.argv;
 
 const builds = {
   static: async (watch = false) => {
-    copy('./assets/static', './web/assets/static');
+    copy(
+      './node_modules/@shoelace-style/shoelace',
+      './web/assets/vendor/shoelace'
+    );
+    await copy('./assets/static', './web/assets/static');
     if (!watch) return;
     chokidar
       .watch('./assets/static')
