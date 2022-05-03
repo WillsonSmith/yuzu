@@ -15,6 +15,7 @@ const filesToCache = [
    */
 ];
 
+// Todo: Automatically increment version number
 const staticCacheName = 'pages-cache-v1';
 self.addEventListener('install', (event) => {
   // Perform install steps
