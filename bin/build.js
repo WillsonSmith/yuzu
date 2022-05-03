@@ -9,6 +9,7 @@ const builds = {
       './node_modules/@shoelace-style/shoelace',
       './web/assets/vendor/shoelace'
     );
+    copy('./service-worker.js', './web/service-worker.js');
     await copy('./assets/static', './web/assets/static');
     if (!watch) return;
     chokidar
