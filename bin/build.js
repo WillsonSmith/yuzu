@@ -1,13 +1,6 @@
 import { build } from 'esbuild';
 import { copy } from 'fs-extra';
 import chokidar from 'chokidar';
-
-import {
-  entryPoints as jsEntry,
-  outfile as jsOutfile,
-} from './javascript/index.js';
-import { entryPoints as cssEntry, outfile as cssOutfile } from './css/index.js';
-
 const [, , watchOrBuild, file] = process.argv;
 
 const builds = {
@@ -37,26 +30,22 @@ const builds = {
   },
   js: async (watch = false) => {
     build({
-      entryPoints: jsEntry,
+      entryPoints: ['./assets/js/index.js'],
       bundle: true,
       format: 'esm',
-      outfile: jsOutfile,
+      outfile: './web/assets/js/index.js',
       minify: !watch,
       watch,
     });
   },
   css: (watch = false) => {
     build({
-      entryPoints: cssEntry,
+      entryPoints: ['./assets/css/main.css'],
       bundle: true,
-      outfile: cssOutfile,
+      outfile: './web/assets/css/main.css',
       minify: !watch,
       watch,
     });
-  },
-  'design-system': async (watch = false) => {
-    // TODO: Build design-system
-    // pull in `system/**/*.css`, merge rules, output system.css
   },
 };
 
