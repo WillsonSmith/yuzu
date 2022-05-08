@@ -42,6 +42,12 @@ Details about the systems involved in this project.
   // Build for production
 ```
 
+## Projects that have evolved this template 
+
+* https://gifit.pics/
+* https://voice-clips.netlify.app/
+* https://willsonsmith.com
+
 ## On first viewing
 <img width="954" alt="image" src="https://user-images.githubusercontent.com/1087756/167286192-9797a543-f01b-45e2-994f-1533d2feeccd.png">
 
