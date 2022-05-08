@@ -44,8 +44,8 @@ Details about the systems involved in this project.
 
 ## Projects that have evolved this template 
 
-* https://gifit.pics/
-* https://voice-clips.netlify.app/
+* https://gifit.pics
+* https://voice-clips.netlify.app
 * https://willsonsmith.com
 
 ## On first viewing
