@@ -1,0 +1,13 @@
+{
+  "name": "CrispyCrunch",
+  "description": "An enhancement suite for Crunchyroll",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "/web/assets/js/background.js"
+  },
+  "action": {
+    "default_popup": "/web/index.html"
+  },
+  "permissions": ["storage", "activeTab", "scripting"]
+}

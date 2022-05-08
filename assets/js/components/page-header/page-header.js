@@ -15,6 +15,7 @@ class PageHeader extends LitElement {
   static get properties() {
     return {
       title: { type: String },
+      noActions: { type: Boolean, attribute: 'no-actions' },
     };
   }
 
@@ -52,7 +53,7 @@ class PageHeader extends LitElement {
         color: var(--sl-color-neutral-900);
       }
 
-      .social {
+      .header-social {
         display: flex;
         align-items: center;
       }
@@ -93,35 +94,40 @@ class PageHeader extends LitElement {
         <h1 class="header-title">
           <slot name="title"></slot>
         </h1>
-        <nav class="header-social">
-          <sl-dropdown>
-            <sl-button slot="trigger" pill size="small" caret>
-              <sl-icon name="moon" label="Select theme"></sl-icon>
-            </sl-button>
-            <sl-menu value="automatic" @sl-select=${this._handleThemeChange}>
-              <sl-menu-item value="light">Light</sl-menu-item>
-              <sl-menu-item value="dark">Dark</sl-menu-item>
-              <sl-menu-item value="automatic">Automatic</sl-menu-item>
-            </sl-menu>
-          </sl-dropdown>
+        ${this.noActions
+          ? ''
+          : html` <nav class="header-social">
+              <sl-dropdown>
+                <sl-button slot="trigger" pill size="small" caret>
+                  <sl-icon name="moon" label="Select theme"></sl-icon>
+                </sl-button>
+                <sl-menu
+                  value="automatic"
+                  @sl-select=${this._handleThemeChange}
+                >
+                  <sl-menu-item value="light">Light</sl-menu-item>
+                  <sl-menu-item value="dark">Dark</sl-menu-item>
+                  <sl-menu-item value="automatic">Automatic</sl-menu-item>
+                </sl-menu>
+              </sl-dropdown>
 
-          <sl-tooltip content="Twitter">
-            <sl-icon-button
-              name="twitter"
-              label="Twitter"
-              href="https://twitter.com/modfox"
-              target="_blank"
-            ></sl-icon-button>
-          </sl-tooltip>
-          <sl-tooltip content="GitHub">
-            <sl-icon-button
-              name="github"
-              label="GitHub"
-              href="https://github.com/willsonsmith/willsonsmith.com"
-              target="_blank"
-            ></sl-icon-button>
-          </sl-tooltip>
-        </nav>
+              <sl-tooltip content="Twitter">
+                <sl-icon-button
+                  name="twitter"
+                  label="Twitter"
+                  href="https://twitter.com/modfox"
+                  target="_blank"
+                ></sl-icon-button>
+              </sl-tooltip>
+              <sl-tooltip content="GitHub">
+                <sl-icon-button
+                  name="github"
+                  label="GitHub"
+                  href="https://github.com/willsonsmith/willsonsmith.com"
+                  target="_blank"
+                ></sl-icon-button>
+              </sl-tooltip>
+            </nav>`}
       </header>
     `;
   }

@@ -13,6 +13,7 @@ html *, html *::before, html *::after {
 
 
 body {
+  min-width: 400px;
   margin: 0;
   font-family: var(--sl-font-sans);
   font-size: var(--sl-font-size-medium);

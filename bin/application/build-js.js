@@ -13,3 +13,12 @@ build({
   minify: !watch,
   watch: watchFlag,
 });
+
+build({
+  entryPoints: ['./assets/js/background.js'],
+  bundle: true,
+  format: 'esm',
+  outfile: './web/assets/js/background.js',
+  minify: !watch,
+  watch: watchFlag,
+});
