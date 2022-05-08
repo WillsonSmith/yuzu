@@ -2,6 +2,8 @@ import { LitElement, html, css } from 'lit';
 
 import '@shoelace-style/shoelace/dist/components/dropdown/dropdown.js';
 import '@shoelace-style/shoelace/dist/components/icon/icon.js';
+import '@shoelace-style/shoelace/dist/components/icon-button/icon-button.js';
+import '@shoelace-style/shoelace/dist/components/tooltip/tooltip.js';
 import '@shoelace-style/shoelace/dist/components/button/button.js';
 import '@shoelace-style/shoelace/dist/components/menu/menu.js';
 import '@shoelace-style/shoelace/dist/components/menu-item/menu-item.js';
@@ -63,6 +65,15 @@ class PageHeader extends LitElement {
         pointer-events: none;
         z-index: -1;
       }
+
+      .social {
+        display: flex;
+        align-items: center;
+      }
+
+      .social sl-menu {
+        margin-top: var(--sl-spacing-2x-small);
+      }
     `;
   }
 
@@ -74,19 +85,18 @@ class PageHeader extends LitElement {
           <colorize-word>Willson</colorize-word>
         </a>
       </h1>
-      <nav>
-        <div class="social">
-          <sl-dropdown>
-            <sl-button slot="trigger" pill size="small" caret>
-              <sl-icon name="moon" label="Select theme"></sl-icon>
-            </sl-button>
-            <sl-menu value="automatic" @sl-select=${this._handleThemeChange}>
-              <sl-menu-item value="light">Light</sl-menu-item>
-              <sl-menu-item value="dark">Dark</sl-menu-item>
-              <sl-menu-item value="automatic">Automatic</sl-menu-item>
-            </sl-menu>
-          </sl-dropdown>
-        </div>
+      <nav class="social">
+        <sl-dropdown>
+          <sl-button slot="trigger" pill size="small" caret>
+            <sl-icon name="moon" label="Select theme"></sl-icon>
+          </sl-button>
+          <sl-menu value="automatic" @sl-select=${this._handleThemeChange}>
+            <sl-menu-item value="light">Light</sl-menu-item>
+            <sl-menu-item value="dark">Dark</sl-menu-item>
+            <sl-menu-item value="automatic">Automatic</sl-menu-item>
+          </sl-menu>
+        </sl-dropdown>
+
         <sl-tooltip content="Twitter">
           <sl-icon-button
             name="twitter"
