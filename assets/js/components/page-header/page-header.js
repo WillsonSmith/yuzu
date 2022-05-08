@@ -43,7 +43,7 @@ class PageHeader extends LitElement {
         color: var(--sl-color-neutral-900);
       }
 
-      .header h1 a {
+      .header h1 ::slotted(a) {
         text-decoration: none;
         color: var(--sl-color-neutral-900);
       }
@@ -86,9 +86,7 @@ class PageHeader extends LitElement {
     return html` <div class="header">
       <star-sheet></star-sheet>
       <h1>
-        <a href="/">
-          <colorize-word>${this.title}</colorize-word>
-        </a>
+        <slot name="title"></slot>
       </h1>
       <nav class="social">
         <sl-dropdown>

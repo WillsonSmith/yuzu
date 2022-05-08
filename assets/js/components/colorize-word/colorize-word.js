@@ -46,11 +46,7 @@ class ColorizeWord extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     const text = this.textContent;
-    this.letters = text.split('');
-    this.colors = new Gradient()
-      .setColorGradient(...COLORS)
-      .setMidpoint(this.letters.length)
-      .getColors();
+    this._setText(text);
   }
 
   render() {
@@ -65,10 +61,24 @@ class ColorizeWord extends LitElement {
           `;
         })}
         <sl-visually-hidden>
-          <slot></slot>
+          <slot @slotchange=${this._handleSlotChange}></slot>
         </sl-visually-hidden>
       </span>
     `;
+  }
+
+  _handleSlotChange(event) {
+    this._setText(event.target.textContent);
+    console.log('slotchange');
+    console.log(this.textContent);
+  }
+
+  _setText(text) {
+    this.letters = text.split('');
+    this.colors = new Gradient()
+      .setColorGradient(...COLORS)
+      .setMidpoint(this.letters.length)
+      .getColors();
   }
 }
 
