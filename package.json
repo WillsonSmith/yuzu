@@ -9,18 +9,23 @@
     "serve:netlify": "netlify dev",
     "build:application": "",
     "build:application:production": "",
-    "build:application:html": "",
-    "build:application:css": "",
-    "build:application:js": "",
+    "application:build:html": "node bin/application/build-html.js",
+    "application:watch:html": "node bin/application/build-html.js --watch",
+    "application:build:css": "node bin/application/build-css.js",
+    "application:watch:css": "node bin/application/build-css.js --watch",
+    "application:build:js": "node bin/application/build-js.js",
+    "application:watch:js": "node bin/application/build-js.js --watch",
+
+    "application:copy:static": "node bin/application/copy-static.js",
+    "application:watch:static": "node bin/application/copy-static.js --watch",
+
+
+    "application:serve": "concurrently \"npm run serve:netlify\" \"npm run application:watch:js\" \"npm run application:watch:css\" \"npm run application:watch:html\" \"npm run application:watch:static\"",
+    "application:dev": "npm run application:serve",
+
+    "application:build": "concurrently \"npm run application:build:js\" \"npm run application:build:css\" \"npm run application:build:html\" \"npm run application:copy:static\"",
 
     "build:components:library": "",
-
-
-    "build": "node bin/application/build.js",
-    "build:components": "echo 'NOT IMPLEMENTED • TODO: build components'",
-    "html": "node bin/application/build.js build html",
-    "build:prod": "npm run build build js; npm run build build css; npm run build build html; npm run build build static",
-    "dev": "concurrently \"npm run serve:netlify\" \"npm run build watch js\" \"npm run build watch css\" \"npm run build watch html\" \"npm run build watch static\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
