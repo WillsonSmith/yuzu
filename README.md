@@ -29,7 +29,10 @@ Details about the systems involved in this project.
 
 ```sh
 npm install
+```
 
+
+```sh
 # Start development server and continuously build assets
 npm run dev
   
