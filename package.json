@@ -8,6 +8,7 @@
     "serve": "http-server web/",
     "serve:netlify": "netlify dev",
     "build": "node bin/build.js",
+    "build:components": "echo 'NOT IMPLEMENTED • TODO: build components'",
     "html": "node bin/build.js build html",
     "build:prod": "npm run build build js; npm run build build css; npm run build build html; npm run build build static",
     "dev": "concurrently \"npm run serve:netlify\" \"npm run build watch js\" \"npm run build watch css\" \"npm run build watch html\" \"npm run build watch static\"",
