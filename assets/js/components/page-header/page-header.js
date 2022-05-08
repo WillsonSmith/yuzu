@@ -20,6 +20,9 @@ class PageHeader extends LitElement {
 
   static get styles() {
     return css`
+      :host {
+        --font-family: 'Fredoka', var(--sl-font-sans), sans-serif;
+      }
       .header {
         background: var(--sl-color-neutral-0);
         position: sticky;
@@ -36,7 +39,7 @@ class PageHeader extends LitElement {
 
       .header h1 {
         margin: 0;
-        font-family: 'Fredoka', var(--sl-font-sans);
+        font-family: var(--font-family);
         font-size: var(--sl-font-size-2x-large);
         line-height: var(--sl-line-height-normal);
         font-weight: var(--sl-font-weight-semibold);
