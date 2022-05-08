@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="sl-theme-dark" lang="en">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,17 +20,13 @@
     />
     <link rel="stylesheet" href="./assets/css/main.css" />
 
-    <script purpose="light-switch">
-      switch (localStorage.getItem('preferred-theme')) {
-        case 'dark':
-          document.documentElement.classList.add('sl-theme-dark');
-          break;
-        case 'light':
-          break;
-        default:
-          window.matchMedia('(prefers-color-scheme: dark)').matches &&
-            document.documentElement.classList.add('sl-theme-dark');
+    <script type="module" purpose="light-switch">
+      const root = document.documentElement;
+      const theme = localStorage.getItem('preferred-theme');
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        root.classList.add('sl-theme-dark');
       }
+      if (theme === 'light') root.classList.remove('sl-theme-dark');
     </script>
   </head>
 
