@@ -33,13 +33,54 @@ Details about the systems involved in this project.
 
 ## Usage
 
-```
-  npm run application:dev
-  // Run in development mode
-
+```sh
+  # Start development server and continuously build assets
+  npm run dev
+  
+  # Build assets for production
   npm run application:build
-  // Build for production
 ```
+
+
+```html
+<!-- index.html -->
+<body>
+  <page-header>
+    <a href="/" slot="title">
+      <colorize-word>Template</colorize-word>
+    </a>
+  </page-header>
+
+  <main>
+    <sl-card>
+      <h2 slot="header">Project template</h2>
+      A template for front-end web applications.
+    </sl-card>
+  </main>
+
+  <script type="module" src="./assets/js/(._.).js"></script>
+</body>
+```
+
+```js
+// assets/js/(._.).js
+
+/** Shoelace setup */
+import { setBasePath } from './components/index.js';
+setBasePath('/assets/vendor/shoelace/dist');
+
+/** Shoelace components used on index */
+import '@shoelace-style/shoelace/dist/components/card/card.js';
+
+/** Main page required components components */
+import './components/page-header/page-header.js';
+import './components/colorize-word/colorize-word.js';
+
+```
+
+<img width="1040" alt="image" src="https://user-images.githubusercontent.com/1087756/167305378-ef61531a-2bc7-42ff-9192-011dd7a3fe37.png">
+
+
 
 ## Projects that have evolved this template
 
@@ -47,6 +88,3 @@ Details about the systems involved in this project.
 - https://voice-clips.netlify.app
 - https://willsonsmith.com
 
-## On first viewing
-
-<img width="954" alt="image" src="https://user-images.githubusercontent.com/1087756/167286192-9797a543-f01b-45e2-994f-1533d2feeccd.png">
