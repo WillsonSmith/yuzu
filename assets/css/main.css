@@ -23,10 +23,6 @@ body {
   line-height: var(--sl-line-height-normal);
 }
 
-
-
-
 main {
-  display: flex;
-  flex-direction: column;
+  padding: var(--sl-spacing-large);
 }

@@ -77,12 +77,17 @@ class PageHeader extends LitElement {
     `;
   }
 
+  constructor() {
+    super();
+    this.title = 'Page Title';
+  }
+
   render() {
     return html` <div class="header">
       <star-sheet></star-sheet>
       <h1>
-        <a href="/" aria-label="Willson">
-          <colorize-word>Willson</colorize-word>
+        <a href="/">
+          <colorize-word>${this.title}</colorize-word>
         </a>
       </h1>
       <nav class="social">
