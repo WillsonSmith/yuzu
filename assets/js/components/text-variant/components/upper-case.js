@@ -1,3 +1,7 @@
+import { LitElement, html, css } from 'lit';
+
+import '@shoelace-style/shoelace/dist/components/visually-hidden/visually-hidden.js';
+
 class UpperCase extends LitElement {
   static get properties() {
     return {
@@ -18,7 +22,7 @@ class UpperCase extends LitElement {
 
   render() {
     return html`
-      <span class="uppercase">${this.textContent}</span>
+      <span aria-hidden="true" class="uppercase">${this.textContent}</span>
       <sl-visually-hidden>
         <slot></slot>
       </sl-visually-hidden>

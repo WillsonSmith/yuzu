@@ -20,7 +20,7 @@ class TextVariant extends LitElement {
   }
 
   render() {
-    if (this.uppercase) {
+    if (this.variant === 'uppercase') {
       return html` <upper-case>${this.textContent}</upper-case> `;
     }
     return html` <span>${this.textContent}</span> `;
