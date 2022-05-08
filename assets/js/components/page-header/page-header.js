@@ -23,6 +23,7 @@ class PageHeader extends LitElement {
       :host {
         --font-family: 'Fredoka', var(--sl-font-sans), sans-serif;
       }
+
       .header {
         background: var(--sl-color-neutral-0);
         position: sticky;
@@ -37,7 +38,7 @@ class PageHeader extends LitElement {
         z-index: 1;
       }
 
-      .header h1 {
+      .header-title {
         margin: 0;
         font-family: var(--font-family);
         font-size: var(--sl-font-size-2x-large);
@@ -46,13 +47,14 @@ class PageHeader extends LitElement {
         color: var(--sl-color-neutral-900);
       }
 
-      .header h1 ::slotted(a) {
+      .header-title ::slotted(a) {
         text-decoration: none;
         color: var(--sl-color-neutral-900);
       }
 
-      .header sl-dropdown {
-        margin-right: var(--sl-spacing-2x-small);
+      .social {
+        display: flex;
+        align-items: center;
       }
 
       colorize-word {
@@ -69,12 +71,11 @@ class PageHeader extends LitElement {
         z-index: -1;
       }
 
-      .social {
-        display: flex;
-        align-items: center;
+      sl-dropdown {
+        margin-right: var(--sl-spacing-2x-small);
       }
 
-      .social sl-menu {
+      sl-menu {
         margin-top: var(--sl-spacing-2x-small);
       }
     `;
@@ -86,41 +87,43 @@ class PageHeader extends LitElement {
   }
 
   render() {
-    return html` <div class="header">
-      <star-sheet></star-sheet>
-      <h1>
-        <slot name="title"></slot>
-      </h1>
-      <nav class="social">
-        <sl-dropdown>
-          <sl-button slot="trigger" pill size="small" caret>
-            <sl-icon name="moon" label="Select theme"></sl-icon>
-          </sl-button>
-          <sl-menu value="automatic" @sl-select=${this._handleThemeChange}>
-            <sl-menu-item value="light">Light</sl-menu-item>
-            <sl-menu-item value="dark">Dark</sl-menu-item>
-            <sl-menu-item value="automatic">Automatic</sl-menu-item>
-          </sl-menu>
-        </sl-dropdown>
+    return html`
+      <header class="header">
+        <star-sheet></star-sheet>
+        <h1 class="header-title">
+          <slot name="title"></slot>
+        </h1>
+        <nav class="header-social">
+          <sl-dropdown>
+            <sl-button slot="trigger" pill size="small" caret>
+              <sl-icon name="moon" label="Select theme"></sl-icon>
+            </sl-button>
+            <sl-menu value="automatic" @sl-select=${this._handleThemeChange}>
+              <sl-menu-item value="light">Light</sl-menu-item>
+              <sl-menu-item value="dark">Dark</sl-menu-item>
+              <sl-menu-item value="automatic">Automatic</sl-menu-item>
+            </sl-menu>
+          </sl-dropdown>
 
-        <sl-tooltip content="Twitter">
-          <sl-icon-button
-            name="twitter"
-            label="Twitter"
-            href="https://twitter.com/modfox"
-            target="_blank"
-          ></sl-icon-button>
-        </sl-tooltip>
-        <sl-tooltip content="GitHub">
-          <sl-icon-button
-            name="github"
-            label="GitHub"
-            href="https://github.com/willsonsmith/willsonsmith.com"
-            target="_blank"
-          ></sl-icon-button>
-        </sl-tooltip>
-      </nav>
-    </div>`;
+          <sl-tooltip content="Twitter">
+            <sl-icon-button
+              name="twitter"
+              label="Twitter"
+              href="https://twitter.com/modfox"
+              target="_blank"
+            ></sl-icon-button>
+          </sl-tooltip>
+          <sl-tooltip content="GitHub">
+            <sl-icon-button
+              name="github"
+              label="GitHub"
+              href="https://github.com/willsonsmith/willsonsmith.com"
+              target="_blank"
+            ></sl-icon-button>
+          </sl-tooltip>
+        </nav>
+      </header>
+    `;
   }
 
   _handleThemeChange(event) {
