@@ -31,15 +31,13 @@ Details about the systems involved in this project.
 npm install
 ```
 
-
 ```sh
 # Start development server and continuously build assets
 npm run dev
-  
+
 # Build assets for production
 npm run application:build
 ```
-
 
 ```html
 <!-- index.html -->
@@ -65,7 +63,7 @@ npm run application:build
 // assets/js/(._.).js
 
 /** Shoelace setup */
-import { setBasePath } from './components/index.js';
+import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.js';
 setBasePath('/assets/vendor/shoelace/dist');
 
 /** Shoelace components used on index */
@@ -74,16 +72,12 @@ import '@shoelace-style/shoelace/dist/components/card/card.js';
 /** Main page required components components */
 import './components/page-header/page-header.js';
 import './components/colorize-word/colorize-word.js';
-
 ```
 
 <img width="1040" alt="image" src="https://user-images.githubusercontent.com/1087756/167305378-ef61531a-2bc7-42ff-9192-011dd7a3fe37.png">
-
-
 
 ## Projects that have evolved this template
 
 - https://gifit.pics
 - https://voice-clips.netlify.app
 - https://willsonsmith.com
-
