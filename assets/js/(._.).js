@@ -9,21 +9,26 @@ import '@shoelace-style/shoelace/dist/components/card/card.js';
 import './components/page-header/page-header.js';
 import './components/colorize-word/colorize-word.js';
 
-/** Scripts */
+/** Initialize */
+const header = document.querySelector('page-header');
+header.addEventListener('theme-change', ({ detail: { theme } }) =>
+  updateTheme(theme)
+);
 
-chrome.storage.sync.get('color', ({ theme }) => setTheme(theme));
+chrome.storage.sync.get('theme', ({ theme }) => {
+  setTheme(theme);
+});
 
-document
-  .querySelector('page-header')
-  .addEventListener('theme-change', ({ detail: { theme } }) => {
-    updateTheme(theme);
+/** Extension script */
+chrome.storage.onChanged.addListener(({ theme }) => {
+  document.querySelector('sl-button').addEventListener('click', () => {
+    runOnPage(() => {
+      themeTemplate(theme);
+    });
   });
+});
 
-async function getTheme() {
-  return chrome.storage.get('theme', ({ theme }) => {
-    setTheme(theme);
-  });
-}
+/** Extension Functions */
 
 function updateTheme(theme) {
   chrome.storage.sync.set({ theme });
@@ -32,10 +37,50 @@ function updateTheme(theme) {
 
 function setTheme(theme) {
   const root = document.documentElement;
-  root.classList.toggle(
-    'sl-theme-dark',
-    theme === 'dark' ||
-      (theme === 'automatic' &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-  );
+  root.classList.toggle('sl-theme-dark', themeClass(theme) === 'sl-theme-dark');
 }
+
+function themeClass(theme) {
+  switch (theme) {
+    case 'dark':
+      return 'sl-theme-dark';
+    case 'light':
+      return '';
+    case 'automatic':
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      return mediaQuery.matches ? 'sl-theme-dark' : '';
+  }
+}
+
+function themeTemplate(theme) {
+  return () => `() => {
+      const root = document.documentElement;
+      root.classList.toggle('sl-theme-dark', ${
+        themeClass(theme) === 'sl-theme-dark'
+      });
+    }
+  `;
+}
+
+/* Page script */
+
+document.querySelector('sl-button').addEventListener('click', () => {
+  runOnPage(() => {
+    console.log('test');
+  });
+});
+
+// function logOnPage(args) {
+//   runOnPage(...args);
+// }
+
+async function runOnPage(fn) {
+  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    function: fn,
+  });
+}
+
+/** Background script */

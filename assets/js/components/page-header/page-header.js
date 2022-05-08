@@ -23,6 +23,7 @@ class PageHeader extends LitElement {
     return css`
       :host {
         --font-family: 'Fredoka', var(--sl-font-sans), sans-serif;
+        --header-title-font-size: var(--sl-font-size-2x-large);
       }
 
       .header {
@@ -42,7 +43,7 @@ class PageHeader extends LitElement {
       .header-title {
         margin: 0;
         font-family: var(--font-family);
-        font-size: var(--sl-font-size-2x-large);
+        font-size: var(--header-title-font-size);
         line-height: var(--sl-line-height-normal);
         font-weight: var(--sl-font-weight-semibold);
         color: var(--sl-color-neutral-900);

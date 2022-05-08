@@ -38,3 +38,7 @@ main sl-card {
 main sl-card h2 {
   margin: 0;
 }
+
+page-header {
+  --header-title-font-size: var(--sl-font-size-large);
+}
