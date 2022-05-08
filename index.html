@@ -19,19 +19,73 @@
       href="/assets/vendor/shoelace/dist/themes/dark.css"
     />
     <link rel="stylesheet" href="./assets/css/main.css" />
+
+    <script purpose="light-switch">
+      switch(localStorage.getItem('preferred-theme')) {
+        case 'dark':
+          document.documentElement.classList.add('sl-theme-dark');
+          break;
+        case 'light':
+          break;
+        default:
+          window.matchMedia("(prefers-color-scheme: dark)").matches && document.documentElement.classList.add('sl-theme-dark');
+      }
+    </script>
   </head>
 
   <body>
     <header>
-      <h1>My website header</h1>
+      <star-sheet></star-sheet>
+      <h1><a href="/" aria-label="Willson"><colorize-word>Willson</colorize-word></a></h1>
+      <nav>
+        <div class="social">
+          <sl-dropdown>
+            <sl-button slot="trigger" pill size="small" caret>
+              <sl-icon name="moon" label="Select theme"></sl-icon>
+            </sl-button>
+            <sl-menu value="automatic">
+              <sl-menu-item value="light">Light</sl-menu-item>
+              <sl-menu-item value="dark">Dark</sl-menu-item>
+              <sl-menu-item value="automatic">Automatic</sl-menu-item>
+            </sl-menu>
+          </sl-dropdown>
+        <sl-tooltip content="Twitter">
+          <sl-icon-button
+            name="twitter"
+            label="Twitter"
+            href="https://twitter.com/modfox"
+            target="_blank"
+          ></sl-icon-button>
+        </sl-tooltip>
+        <sl-tooltip content="GitHub">
+          <sl-icon-button
+            name="github"
+            label="GitHub"
+            href="https://github.com/willsonsmith/willsonsmith.com"
+            target="_blank"
+          ></sl-icon-button>
+        </sl-tooltip>
+      </nav>
     </header>
     <main>
-      <p>Some website content</p>
+      Hello
     </main>
-    <aside>Some additional content</aside>
-    <footer>Some footer content</footer>
 
-    <script type="module" src="./assets/js/index.js"></script>
+    <script type="module" src="./assets/js/(._.).js"></script>
+    <script purpose="light-switch">
+      const menu = document.querySelector("sl-menu");
+      menu.addEventListener('sl-select', (event) => {
+        const theme = event.detail.item.value;
+        localStorage.setItem('preferred-theme', theme);
+        let dark;
+        switch(theme) {
+          case 'light': dark = false; break;
+          case 'dark': dark = true; break;
+          default: dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        document.documentElement.classList.toggle('sl-theme-dark', dark);
+      });
+    </script>
 
     <!-- Add a Service Worker -->
     <!-- <script type="text/javascript">

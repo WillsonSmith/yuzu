@@ -31,10 +31,10 @@ const builds = {
   },
   js: async (watch = false) => {
     build({
-      entryPoints: ['./assets/js/index.js'],
+      entryPoints: ['./assets/js/(._.).js'],
       bundle: true,
       format: 'esm',
-      outfile: './web/assets/js/index.js',
+      outfile: './web/assets/js/(._.).js',
       minify: !watch,
       watch,
     });
@@ -46,6 +46,7 @@ const builds = {
       outfile: './web/assets/css/main.css',
       minify: !watch,
       watch,
+      external: ['*.ttf'],
     });
   },
 };
