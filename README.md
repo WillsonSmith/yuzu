@@ -1,11 +1,20 @@
-# site-template
+# Project Template
 
-An evolving template for scaffolding front-end web applications.
-By default it ships with [Shoelace](https://shoelace.style/) and [Lit](https://lit.dev/), built with [esbuild](https://esbuild.github.io/) to remain flexible and highly configurable.
+## Description
 
-Note:
-When migrating components, please make sure to update the following:
+This project template is built on web components, it includes [`Shoelace`](https://shoelace.style/) and [`LitElement`](https://lit.dev/) as well as a number of other web components. The build system contains a series of `node` scripts that use [`esbuild`](https://esbuild.github.io/) for transpiling the source code. There are very few guard rails, and, as a result, builds are highly customizable.
 
-1. Create the component with its new name
-2. Point the export of the previous component to the new component
-3. Mark the component as deprecated, and provide a migration guide
+---
+
+### Details
+
+Details about the systems involved in this project.
+
+#### Component System
+
+- [`Shoelace`](https://shoelace.style/)
+- [`Lit`](https://lit.dev/)
+
+#### Build System
+
+- [`esbuild`](https://esbuild.github.io/)
