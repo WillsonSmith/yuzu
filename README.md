@@ -25,20 +25,16 @@ Details about the systems involved in this project.
 
 - [`esbuild`](https://esbuild.github.io/)
 
-## Installation
-
-```
-  npm install
-```
-
 ## Usage
 
 ```sh
-  # Start development server and continuously build assets
-  npm run dev
+npm install
+
+# Start development server and continuously build assets
+npm run dev
   
-  # Build assets for production
-  npm run application:build
+# Build assets for production
+npm run application:build
 ```
 
 
