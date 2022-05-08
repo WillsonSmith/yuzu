@@ -20,7 +20,7 @@
     />
     <link rel="stylesheet" href="./assets/css/main.css" />
 
-    <script type="module" purpose="light-switch">
+    <script type="module">
       const root = document.documentElement;
       const theme = localStorage.getItem('preferred-theme');
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -45,19 +45,16 @@
     </main>
 
     <script type="module" src="./assets/js/(._.).js"></script>
-    <script purpose="light-switch">
+    <script>
       const header = document.querySelector('page-header');
       header.addEventListener('theme-change', (event) => {
         const theme = event.detail.theme;
-        console.log(theme);
         localStorage.setItem('preferred-theme', theme);
-        let dark;
-        if (theme === 'light') dark = false;
+        let dark = false;
         if (theme === 'dark') dark = true;
-        if (dark === undefined) {
+        if (theme === 'automatic') {
           dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         }
-
         document.documentElement.classList.toggle('sl-theme-dark', dark);
       });
     </script>

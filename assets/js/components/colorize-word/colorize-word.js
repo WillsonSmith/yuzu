@@ -67,12 +67,6 @@ class ColorizeWord extends LitElement {
     `;
   }
 
-  _handleSlotChange(event) {
-    this._setText(event.target.textContent);
-    console.log('slotchange');
-    console.log(this.textContent);
-  }
-
   _setText(text) {
     this.letters = text.split('');
     this.colors = new Gradient()
