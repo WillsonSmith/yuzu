@@ -13,12 +13,7 @@ class ExtensionWrapper extends LitElement {
     super.connectedCallback();
 
     // Get some element on the page
-    const profileImage = Array.from(
-      this.querySelectorAll('*[aria-label]')
-    ).filter((el) => {
-      el.getAttribute('aria-label').includes('Google Account');
-    });
-
+    const profileImage = this.querySelector('[aria-label*="Google Account');
     // If we found one, we can upgrade it
     upgradeElement(profileImage[0], 'element-upgrade');
 
