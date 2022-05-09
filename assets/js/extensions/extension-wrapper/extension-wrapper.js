@@ -14,8 +14,9 @@ class ExtensionWrapper extends LitElement {
 
     // Get some element on the page
     const profileImage = this.querySelector('[aria-label*="Google Account');
+
     // If we found one, we can upgrade it
-    upgradeElement(profileImage[0], 'element-upgrade');
+    upgradeElement(profileImage, 'element-upgrade');
 
     const observer = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
@@ -41,7 +42,7 @@ class ExtensionWrapper extends LitElement {
       subtree: true,
     });
 
-    this.addEventListener('setting-change', (event) => {
+    this.addEventListener('setting-changed', (event) => {
       console.log(event.detail);
     });
   }
