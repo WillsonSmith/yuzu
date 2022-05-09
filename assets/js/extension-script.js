@@ -19,10 +19,16 @@ header.addEventListener('theme-change', ({ detail: { theme } }) =>
 );
 
 /** Extension script */
-chrome.storage.onChanged.addListener(({ theme }) => {
+chrome.storage.onChanged.addListener(async ({ theme }) => {
+  const tab = await getCurrentTab();
   console.log(theme);
-  console.log(themeTemplate(theme.newValue));
-  runOnPage(themeTemplate(theme));
+  chrome.tabs.sendMessage(
+    tab.id,
+    { theme: themeClass(theme.newValue) },
+    (response) => {
+      console.log(response);
+    }
+  );
 });
 
 /** Themes */
@@ -46,15 +52,6 @@ function themeClass(theme) {
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
       return mediaQuery.matches ? 'sl-theme-dark' : '';
   }
-}
-
-function themeTemplate(theme) {
-  const themeClassTheme = themeClass(theme);
-  themeClassTheme === 'sl-theme-dark';
-  return () => {
-    const root = document.documentElement;
-    root.classList.toggle('sl-theme-dark', themeClassTheme);
-  };
 }
 
 /** Utility */

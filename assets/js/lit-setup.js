@@ -7,10 +7,3 @@ import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.j
 
 const basePath = document.documentElement.getAttribute('data-base-path');
 setBasePath(basePath);
-
-document.body.innerHTML = '';
-
-render(
-  html` <sl-button>My button<sl-icon name="heart"></sl-icon></sl-button> `,
-  document.body
-);

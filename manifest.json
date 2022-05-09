@@ -18,7 +18,7 @@
     }
   ],
   "web_accessible_resources": [{
-    "resources": ["/web/assets/js/lit-setup.js", "/web/assets/vendor/shoelace/dist/assets/icons/heart.svg"],
+    "resources": ["/web/assets/js/lit-setup.js", "/web/assets/vendor/shoelace/dist/*"],
     "matches": ["<all_urls>"]
   }],
 

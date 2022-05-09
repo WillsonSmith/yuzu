@@ -1,10 +1,4 @@
 import { html, render } from 'lit';
-/** Shoelace setup */
-// import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.js';
-// setBasePath(chrome.runtime.getURL('web/assets/vendor/shoelace/dist'));
-
-// console.log(chrome.runtime.getURL('web/assets/vendor/shoelace/dist'));
-// console.log(chrome.runtime.getURL('web/assets/js/lit-setup.js'));
 
 document.documentElement.setAttribute(
   'data-base-path',
@@ -16,4 +10,11 @@ s.type = 'module';
 s.src = chrome.runtime.getURL('web/assets/js/lit-setup.js');
 s.setAttribute('data-ch-extension', 'true');
 
-render(s, document.body);
+// when chrome message with theme
+chrome.runtime.onMessage.addListener(({ theme }, sender, sendResponse) => {
+  sendResponse({ theme });
+  document.documentElement.classList.toggle(
+    'sl-theme-dark',
+    theme === 'sl-theme-dark'
+  );
+});
