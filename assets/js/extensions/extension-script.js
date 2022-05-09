@@ -6,30 +6,33 @@ setBasePath('./assets/vendor/shoelace/dist');
 import '@shoelace-style/shoelace/dist/components/card/card.js';
 
 /** Main page required components components */
-import './components/page-header/page-header.js';
-import './components/colorize-word/colorize-word.js';
+import '../components/page-header/page-header.js';
+import '../components/colorize-word/colorize-word.js';
 
 /** Initialize */
 chrome.storage.sync.get('theme', ({ theme }) => {
   setTheme(theme);
+  sendTheme(theme);
 });
+
 const header = document.querySelector('page-header');
-header.addEventListener('theme-change', ({ detail: { theme } }) =>
-  updateTheme(theme)
-);
+header.addEventListener('theme-change', ({ detail: { theme } }) => {
+  sendTheme(theme);
+  updateTheme(theme);
+});
 
 /** Extension script */
 chrome.storage.onChanged.addListener(async ({ theme }) => {
-  const tab = await getCurrentTab();
-  console.log(theme);
-  chrome.tabs.sendMessage(
-    tab.id,
-    { theme: themeClass(theme.newValue) },
-    (response) => {
-      console.log(response);
-    }
-  );
+  if (!theme) return;
+  await sendTheme(theme);
 });
+
+async function sendTheme(theme) {
+  const tab = await getCurrentTab();
+  chrome.tabs.sendMessage(tab.id, { theme: themeClass(theme) }, (response) => {
+    console.log(response);
+  });
+}
 
 /** Themes */
 function updateTheme(theme) {
@@ -55,15 +58,6 @@ function themeClass(theme) {
 }
 
 /** Utility */
-
-async function runOnPage(fn) {
-  let tab = await getCurrentTab();
-
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    function: fn,
-  });
-}
 
 async function getCurrentTab() {
   let queryOptions = { active: true, currentWindow: true };

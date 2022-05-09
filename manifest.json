@@ -1,10 +1,10 @@
 {
-  "name": "CrispyCrunch",
-  "description": "An enhancement suite for Crunchyroll",
-  "version": "1.0",
+  "name": "Webcomponent Extensions",
+  "description": "A framework for building Chrome extensions with web components.",
+  "version": "0.0.1",
   "manifest_version": 3,
   "background": {
-    "service_worker": "/web/assets/js/background.js"
+    "service_worker": "/web/assets/js/extensions/background.js"
   },
   "action": {
     "default_popup": "/web/index.html"
@@ -12,16 +12,16 @@
 
   "content_scripts": [
     {
-      "matches": ["https://*/crunchyroll.com/*"],
+      "matches": ["https://*.google.com/*"],
       "css": ["/web/assets/vendor/shoelace/dist/themes/light.css", "/web/assets/vendor/shoelace/dist/themes/dark.css"],
-      "js": ["/web/assets/js/page-script.js"]
+      "js": ["/web/assets/js/extensions/page-script.js"]
     }
   ],
   "web_accessible_resources": [{
-    "resources": ["/web/assets/js/lit-setup.js", "/web/assets/vendor/shoelace/dist/*"],
-    "matches": ["<all_urls>"]
+    "resources": ["/web/assets/js/extensions/lit-setup.js", "/web/assets/vendor/shoelace/dist/*"],
+    "matches": ["https://*.google.com/*"]
   }],
 
   "permissions": [ "storage", "activeTab", "scripting", "cookies" ],
-  "host_permissions": [ "https://*/crunchyroll.com/*" ]
+  "host_permissions": [ "https://*.google.com/*" ]
 }
