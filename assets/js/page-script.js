@@ -5,13 +5,15 @@ document.documentElement.setAttribute(
   chrome.runtime.getURL('web/assets/vendor/shoelace/dist')
 );
 
-const s = document.createElement('script');
-s.type = 'module';
-s.src = chrome.runtime.getURL('web/assets/js/lit-setup.js');
-s.setAttribute('data-ch-extension', 'true');
+/** Create Injected Script */
+const script = document.createElement('script');
+script.type = 'module';
+script.src = chrome.runtime.getURL('web/assets/js/lit-setup.js');
+script.setAttribute('data-ch-extension', 'true');
+document.body.appendChild(script);
 
-// when chrome message with theme
-chrome.runtime.onMessage.addListener(({ theme }, sender, sendResponse) => {
+/** Change Shoelace theme on page  */
+chrome.runtime.onMessage.addListener(({ theme }, _, sendResponse) => {
   sendResponse({ theme });
   document.documentElement.classList.toggle(
     'sl-theme-dark',
