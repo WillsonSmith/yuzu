@@ -10,26 +10,22 @@ import './components/page-header/page-header.js';
 import './components/colorize-word/colorize-word.js';
 
 /** Initialize */
+chrome.storage.sync.get('theme', ({ theme }) => {
+  setTheme(theme);
+});
 const header = document.querySelector('page-header');
 header.addEventListener('theme-change', ({ detail: { theme } }) =>
   updateTheme(theme)
 );
 
-chrome.storage.sync.get('theme', ({ theme }) => {
-  setTheme(theme);
-});
-
 /** Extension script */
 chrome.storage.onChanged.addListener(({ theme }) => {
-  document.querySelector('sl-button').addEventListener('click', () => {
-    runOnPage(() => {
-      themeTemplate(theme);
-    });
-  });
+  console.log(theme);
+  console.log(themeTemplate(theme.newValue));
+  runOnPage(themeTemplate(theme));
 });
 
-/** Extension Functions */
-
+/** Themes */
 function updateTheme(theme) {
   chrome.storage.sync.set({ theme });
   setTheme(theme);
@@ -53,29 +49,18 @@ function themeClass(theme) {
 }
 
 function themeTemplate(theme) {
-  return () => `() => {
-      const root = document.documentElement;
-      root.classList.toggle('sl-theme-dark', ${
-        themeClass(theme) === 'sl-theme-dark'
-      });
-    }
-  `;
+  const themeClassTheme = themeClass(theme);
+  themeClassTheme === 'sl-theme-dark';
+  return () => {
+    const root = document.documentElement;
+    root.classList.toggle('sl-theme-dark', themeClassTheme);
+  };
 }
 
-/* Page script */
-
-document.querySelector('sl-button').addEventListener('click', () => {
-  runOnPage(() => {
-    console.log('test');
-  });
-});
-
-// function logOnPage(args) {
-//   runOnPage(...args);
-// }
+/** Utility */
 
 async function runOnPage(fn) {
-  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  let tab = await getCurrentTab();
 
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
@@ -83,4 +68,8 @@ async function runOnPage(fn) {
   });
 }
 
-/** Background script */
+async function getCurrentTab() {
+  let queryOptions = { active: true, currentWindow: true };
+  let [tab] = await chrome.tabs.query(queryOptions);
+  return tab;
+}

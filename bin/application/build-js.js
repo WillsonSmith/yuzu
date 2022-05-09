@@ -6,11 +6,29 @@ const watchFlag = flags.includes('--watch');
 
 /** Actions */
 build({
-  entryPoints: ['./assets/js/(._.).js'],
+  entryPoints: ['./assets/js/extension-script.js'],
   bundle: true,
   format: 'esm',
-  outfile: './web/assets/js/(._.).js',
-  minify: !watch,
+  outfile: './web/assets/js/extension-script.js',
+  minify: !watchFlag,
+  watch: watchFlag,
+});
+
+build({
+  entryPoints: ['./assets/js/page-script.js'],
+  bundle: true,
+  format: 'esm',
+  outfile: './web/assets/js/page-script.js',
+  minify: !watchFlag,
+  watch: watchFlag,
+});
+
+build({
+  entryPoints: ['./assets/js/lit-setup.js'],
+  bundle: true,
+  format: 'esm',
+  outfile: './web/assets/js/lit-setup.js',
+  minify: !watchFlag,
   watch: watchFlag,
 });
 
@@ -19,6 +37,6 @@ build({
   bundle: true,
   format: 'esm',
   outfile: './web/assets/js/background.js',
-  minify: !watch,
+  minify: !watchFlag,
   watch: watchFlag,
 });
