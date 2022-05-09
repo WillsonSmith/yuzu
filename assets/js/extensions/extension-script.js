@@ -12,27 +12,12 @@ import '../components/colorize-word/colorize-word.js';
 /** Initialize */
 chrome.storage.sync.get('theme', ({ theme }) => {
   setTheme(theme);
-  sendTheme(theme);
 });
 
 const header = document.querySelector('page-header');
 header.addEventListener('theme-change', ({ detail: { theme } }) => {
-  sendTheme(theme);
   updateTheme(theme);
 });
-
-/** Extension script */
-chrome.storage.onChanged.addListener(async ({ theme }) => {
-  if (!theme) return;
-  await sendTheme(theme);
-});
-
-async function sendTheme(theme) {
-  const tab = await getCurrentTab();
-  chrome.tabs.sendMessage(tab.id, { theme: themeClass(theme) }, (response) => {
-    console.log(response);
-  });
-}
 
 /** Themes */
 function updateTheme(theme) {
