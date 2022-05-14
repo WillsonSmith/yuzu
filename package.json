@@ -40,12 +40,13 @@
     "chokidar": "^3.5.3",
     "concurrently": "^7.0.0",
     "esbuild": "^0.14.28",
+    "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-lit": "^1.6.1",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint": "^8.15.0",
     "fs-extra": "^10.0.1",
-    "http-server": "^14.1.0"
+    "http-server": "^14.1.0",
+    "jsdoc": "^3.6.10"
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.0.0-beta.73",
