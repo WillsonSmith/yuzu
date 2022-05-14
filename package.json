@@ -22,7 +22,7 @@
     "dev": "npm run application:dev",
     "application:build": "concurrently \"npm run application:build:js\" \"npm run application:build:css\" \"npm run application:build:html\" \"npm run application:copy:static\"",
     "build:components:library": "",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "web-test-runner **/tests/*.test.js --config web-dev-server.config.js"
   },
   "repository": {
     "type": "git",
@@ -35,18 +35,20 @@
   },
   "homepage": "https://github.com/WillsonSmith/willsonsmith.com#readme",
   "devDependencies": {
+    "@open-wc/testing": "^3.0.0-next.5",
+    "@web/test-runner": "^0.13.27",
     "chokidar": "^3.5.3",
     "concurrently": "^7.0.0",
     "esbuild": "^0.14.28",
-    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-lit": "^1.6.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint": "^8.15.0",
     "fs-extra": "^10.0.1",
     "http-server": "^14.1.0"
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.0.0-beta.73",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
     "javascript-color-gradient": "^2.4.4",
     "lit": "^2.2.3"
   }
