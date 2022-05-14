@@ -8,7 +8,6 @@ import '@shoelace-style/shoelace/dist/components/button/button.js';
 import '@shoelace-style/shoelace/dist/components/menu/menu.js';
 import '@shoelace-style/shoelace/dist/components/menu-item/menu-item.js';
 
-import '../colorize-word/colorize-word.js';
 import '../star-sheet/star-sheet.js';
 
 class PageHeader extends LitElement {
@@ -83,7 +82,7 @@ class PageHeader extends LitElement {
 
   constructor() {
     super();
-    this.title = 'Page Title';
+    this.title = `Page Title`;
   }
 
   render() {
@@ -128,8 +127,8 @@ class PageHeader extends LitElement {
 
   _handleThemeChange(event) {
     const theme = event.detail.item.value;
-    this.dispatchEvent(new CustomEvent('theme-change', { detail: { theme } }));
+    this.dispatchEvent(new CustomEvent(`theme-change`, { detail: { theme } }));
   }
 }
 
-customElements.define('page-header', PageHeader);
+customElements.define(`page-header`, PageHeader);

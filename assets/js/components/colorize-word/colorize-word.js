@@ -4,19 +4,22 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import '@shoelace-style/shoelace/dist/components/visually-hidden/visually-hidden.js';
 
-const COLORS = [
-  '#e74c3c',
-  '#e67e22',
-  '#f1c40f',
-  '#2ecc71',
-  '#3498db',
-  '#9b59b6',
-  '#5b3256',
+const COLOR_DEFAULTS = [
+  `#e74c3c`,
+  `#e67e22`,
+  `#f1c40f`,
+  `#2ecc71`,
+  `#3498db`,
+  `#9b59b6`,
+  `#5b3256`,
 ];
 
 class ColorizeWord extends LitElement {
   static get properties() {
     return {
+      colors: { type: Array },
+      letters: { type: Array },
+      rainbow: { type: Boolean },
       uppercase: { type: Boolean },
     };
   }
@@ -41,12 +44,18 @@ class ColorizeWord extends LitElement {
 
   constructor() {
     super();
+    this.letters = this.textContent.split(``);
+    this.colors = [...new Array(this.letters.length)].map(() => `#000`);
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    const text = this.textContent;
-    this._setText(text);
+  firstUpdated() {
+    this.colors = this._gradient();
+  }
+
+  updated(changedProperties) {
+    if (changedProperties.has(`letters`)) {
+      this.colors = this._gradient();
+    }
   }
 
   render() {
@@ -57,7 +66,7 @@ class ColorizeWord extends LitElement {
       >
         ${this.letters.map((letter, index) => {
           return html`
-            <span style=${`--color: ${this.colors[index]}`}> ${letter} </span>
+            <span style=${`--color: ${this.colors[index]}`}>${letter}</span>
           `;
         })}
         <sl-visually-hidden>
@@ -67,13 +76,16 @@ class ColorizeWord extends LitElement {
     `;
   }
 
-  _setText(text) {
-    this.letters = text.split('');
-    this.colors = new Gradient()
-      .setColorGradient(...COLORS)
-      .setMidpoint(this.letters.length)
-      .getColors();
+  _gradient() {
+    return new Gradient()
+    .setColorGradient(...this.rainbow ? COLOR_DEFAULTS : this.colors)
+    .setMidpoint(this.letters.length)
+    .getColors();
+  }
+
+  _handleSlotChange() {
+    this.letters = this.textContent.split(``);
   }
 }
 
-customElements.define('colorize-word', ColorizeWord);
+customElements.define(`colorize-word`, ColorizeWord);
