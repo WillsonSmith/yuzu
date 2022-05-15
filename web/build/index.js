@@ -9,13 +9,13 @@ flags = {
   minify: flags.includes(`--minify`),
 };
 
-const extensionPath = `./extension`;
-const distPath = `./extension/dist`;
+const webPath = `./web`;
+const distPath = `./web/dist`;
 
 console.log(`BUILD • HTML • ${flags.watch ? `WATCHING` : `BUILDING`}`);
 buildHtml([
   {
-    location: `${extensionPath}/index.html`,
+    location: `${webPath}/index.html`,
     destination: `${distPath}/index.html`,
     ...{ flags },
   },
@@ -24,21 +24,9 @@ buildHtml([
 // Javascript
 const jsConfig = [
   {
-    location: `${extensionPath}/extension-script.js`,
-    destination: `${distPath}/extension-script.js`,
-  },
-  {
-    location: `${extensionPath}/page-script.js`,
-    destination: `${distPath}/page-script.js`,
-  },
-  {
-    location: `${extensionPath}/inject.js`,
-    destination: `${distPath}/inject.js`,
-  },
-  {
-    location: `${extensionPath}/background.js`,
-    destination: `${distPath}/background.js`,
-  },
+    location: `${webPath}/javascript/(._.).js`,
+    destination: `${distPath}/javascript/(._.).js`,
+  }
 ].map((config) => ({ ...config, ...flags }));
 
 console.log(`BUILD • JAVASCRIPT • ${flags.watch ? `WATCHING` : `BUILDING`}`);
@@ -51,17 +39,17 @@ const staticConfig = [
     destination: `${distPath}/vendor/modules/shoelace`,
   },
   {
-    location: `${extensionPath}/service-worker.js`,
+    location: `${webPath}/service-worker.js`,
     destination: `${distPath}/service-worker.js`,
   },
   {
-    location: `${extensionPath}/static`,
+    location: `${webPath}/static`,
     destination: `${distPath}/static`,
   },
   {
     location: `./shared/fonts`,
     destination: `${distPath}/fonts`,
-  }
+  },
 ].map((config) => ({ ...config, ...flags }));
 
 console.log(`BUILD • STATIC • ${flags.watch ? `WATCHING` : `BUILDING`}`);
@@ -69,8 +57,8 @@ copyStatic(staticConfig);
 
 const cssConfig = [
   {
-    location: `${extensionPath}/css/extension.css`,
-    destination: `${distPath}/css/extension.css`,
+    location: `${webPath}/css/main.css`,
+    destination: `${distPath}/css/main.css`,
   },
 ].map((config) => ({ ...config, ...flags }));
 

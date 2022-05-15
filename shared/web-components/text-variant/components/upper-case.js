@@ -29,4 +29,4 @@ class UpperCase extends LitElement {
     `;
   }
 }
-customElements.define('upper-case', UpperCase);
+customElements.define(`upper-case`, UpperCase);
