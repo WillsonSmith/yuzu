@@ -1,4 +1,4 @@
 [build]
   publish = "web/dist"
   command = "npm run web:build:prod"
-  functions = "./functions"
+  functions = "./web/functions"
