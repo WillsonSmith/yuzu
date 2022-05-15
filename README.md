@@ -13,6 +13,11 @@ A template for using [web components](https://open-wc.org/discover/about/#why-we
 
 This is highly tailored to what I need it to be so I never have to fight my build system. If there is something missing, or something that feels clunky, I can change it. 
 
+### How to use
+
+* Build websites and web applications in the [web](https://github.com/WillsonSmith/yuzu/tree/main/web) folder
+* Build browser extensions in the [extension](https://github.com/WillsonSmith/yuzu/tree/main/extension) folder
+
 
 ## Projects that have evolved this template
 
