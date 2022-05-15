@@ -1,0 +1,25 @@
+<style>
+  youtube-thumbnail {
+    max-width: 30ch;
+    margin: 0 auto;
+    margin-top: var(--sl-spacing-large);
+    max-width: 250px;
+  }
+</style>
+<youtube-thumbnail
+  src="https://i3.ytimg.com/vi/mW48PHlBEcM/maxresdefault.jpg"
+  url="https://www.youtube.com/watch?v=mW48PHlBEcM"
+>
+  <span slot="title">TRY NOT TO LAUGH CHALLENGE (NOT EASY)</span>
+  <a class="name" slot="name" href="https://youtube.com/c/Ludwigahgren">
+    <text-aligned-icon icon="check-circle" label="verified">
+      Ludwig
+    </text-aligned-icon>
+  </a>
+  <span slot="details">17K views • 17 minutes ago</span>
+</youtube-thumbnail>
+
+<script type="module">
+  import '../text-aligned-icon/text-aligned-icon.js';
+  import './youtube-thumbnail.js';
+</script>
