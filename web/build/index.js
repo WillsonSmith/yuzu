@@ -46,6 +46,10 @@ const staticConfig = [
     location: `${webPath}/static`,
     destination: `${distPath}/static`,
   },
+  {
+    location: `./shared/fonts`,
+    destination: `${distPath}/fonts`,
+  },
 ].map((config) => ({ ...config, ...flags }));
 
 console.log(`BUILD • STATIC • ${flags.watch ? `WATCHING` : `BUILDING`}`);

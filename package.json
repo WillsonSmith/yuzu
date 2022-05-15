@@ -9,6 +9,7 @@
     "serve:netlify": "netlify dev",
     "dev": "npm run application:dev",
 
+    "web:build:prod": "concurrently \"node web/build/index.js --minify \"",
     "web:build": "concurrently \"node web/build/index.js\"",
     "web:watch": "concurrently \"npm run serve:netlify\" \"node web/build/index.js --watch\"",
 
