@@ -1,6 +1,10 @@
 # 🍋 yuzu
 A template for using [web components](https://open-wc.org/discover/about/#why-web-components) to build dynamic, highly interactive experiences with [`Lit`](https://lit.dev/) and [`Shoelace`](https://shoelace.style/).
 
+```js
+  [`Websites`, `Applications`, `Extensions`, ...more].every(canBuildWithYuzu) // true
+```
+
 ## Details
 
 ### Why
