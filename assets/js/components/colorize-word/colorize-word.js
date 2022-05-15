@@ -65,10 +65,10 @@ class ColorizeWord extends LitElement {
         aria-hidden="true"
       >
         ${this.letters.map((letter, index) => {
-          return html`
+    return html`
             <span style=${`--color: ${this.colors[index]}`}>${letter}</span>
           `;
-        })}
+  })}
         <sl-visually-hidden>
           <slot @slotchange=${this._handleSlotChange}></slot>
         </sl-visually-hidden>
@@ -78,9 +78,9 @@ class ColorizeWord extends LitElement {
 
   _gradient() {
     return new Gradient()
-    .setColorGradient(...this.rainbow ? COLOR_DEFAULTS : this.colors)
-    .setMidpoint(this.letters.length)
-    .getColors();
+      .setColorGradient(...this.rainbow ? COLOR_DEFAULTS : this.colors)
+      .setMidpoint(this.letters.length)
+      .getColors();
   }
 
   _handleSlotChange() {
