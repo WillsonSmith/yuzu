@@ -2,9 +2,8 @@
 .env
 node_modules/
 web/
+extension/dist/
 .cache/
 
 # Local Netlify folder
 .netlify
-
-extension/dist/
