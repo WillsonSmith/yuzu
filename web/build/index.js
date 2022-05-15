@@ -19,7 +19,7 @@ buildHtml([
     destination: `${distPath}/index.html`,
     ...{ flags },
   },
-]);
+].map((config) => ({ ...config, ...flags })));
 
 // Javascript
 const jsConfig = [
