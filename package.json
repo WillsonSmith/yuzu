@@ -7,19 +7,10 @@
   "scripts": {
     "serve": "http-server web/",
     "serve:netlify": "netlify dev",
-    "build:application": "",
-    "build:application:production": "",
-    "application:build:html": "node bin/application/build-html.js",
-    "application:watch:html": "node bin/application/build-html.js --watch",
-    "application:build:css": "node bin/application/build-css.js",
-    "application:watch:css": "node bin/application/build-css.js --watch",
-    "application:build:js": "node bin/application/build-js.js",
-    "application:watch:js": "node bin/application/build-js.js --watch",
-    "application:copy:static": "node bin/application/copy-static.js",
-    "application:watch:static": "node bin/application/copy-static.js --watch",
-    "application:serve": "concurrently \"npm run serve:netlify\" \"npm run application:watch:js\" \"npm run application:watch:css\" \"npm run application:watch:html\" \"npm run application:watch:static\"",
-    "application:dev": "npm run application:serve",
     "dev": "npm run application:dev",
+
+    "web:build": "concurrently \"node web/build/index.js\"",
+    "web:watch": "concurrently \"npm run serve:netlify\" \"node web/build/index.js --watch\"",
 
     "extension:build": "concurrently \"node extension/build/index.js\"",
     "extension:watch": "concurrently \"node extension/build/index.js --watch\"",

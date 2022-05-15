@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="My website description" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Template</title>
+
+    <link rel="apple-touch-icon" href="/static/icon.png" />
+    <link rel="icon" type="image/png" href="/static/icon.png" />
+    <link
+      rel="stylesheet"
+      href="/vendor/modules/shoelace/dist/themes/light.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/vendor/modules/shoelace/dist/themes/dark.css"
+    />
+    <link rel="stylesheet" href="/css/main.css" />
+
+    <script type="module">
+      const root = document.documentElement;
+      const theme = localStorage.getItem('preferred-theme');
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        root.classList.add('sl-theme-dark');
+      }
+      if (theme === 'light') root.classList.remove('sl-theme-dark');
+    </script>
+  </head>
+
+  <body>
+    <page-header>
+      <a href="/" slot="title">
+        <colorize-word rainbow>Template</colorize-word>
+      </a>
+    </page-header>
+
+    <main>
+      <sl-card>
+        <h2 slot="header">Project template</h2>
+        A template for front-end web applications.
+      </sl-card>
+    </main>
+
+    <script type="module" src="/javascript/(._.).js"></script>
+    <script>
+      const header = document.querySelector('page-header');
+      header.addEventListener('theme-change', (event) => {
+        const theme = event.detail.theme;
+        localStorage.setItem('preferred-theme', theme);
+        let dark = false;
+        if (theme === 'dark') dark = true;
+        if (theme === 'automatic') {
+          dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+        document.documentElement.classList.toggle('sl-theme-dark', dark);
+      });
+    </script>
+
+    <!-- Add a Service Worker -->
+    <!-- <script type="text/javascript">
+      navigator.serviceWorker
+        .register('/service-worker.js')
+        .then((registration) => {
+          console.log('Service worker registered.', registration);
+        })
+        .catch((error) => {
+          console.log('Service worker registration failed.', error);
+        });
+    </script> -->
+  </body>
+</html>
