@@ -13,6 +13,7 @@
     "web:build": "concurrently \"node web/build/index.js\"",
     "web:watch": "concurrently \"npm run serve:netlify\" \"node web/build/index.js --watch\"",
 
+    "extension:build:distribution": "concurrently \"node extension/build/index.js --minify\"",
     "extension:build": "concurrently \"node extension/build/index.js\"",
     "extension:watch": "concurrently \"node extension/build/index.js --watch\"",
 

@@ -45,7 +45,7 @@ class ColorizeWord extends LitElement {
   constructor() {
     super();
     this.letters = this.textContent.split(``);
-    this.colors = [...new Array(this.letters.length)].map(() => `#000`);
+    this.colors = [...new Array(this.letters.length)].map(() => `#000000`);
   }
 
   firstUpdated() {
@@ -53,7 +53,7 @@ class ColorizeWord extends LitElement {
   }
 
   updated(changedProperties) {
-    if (changedProperties.has(`letters`)) {
+    if (changedProperties.has(`letters`) || changedProperties.has(`rainbow`)) {
       this.colors = this._gradient();
     }
   }
@@ -77,6 +77,7 @@ class ColorizeWord extends LitElement {
   }
 
   _gradient() {
+    console.log(this.rainbow, COLOR_DEFAULTS, this.colors);
     return new Gradient()
       .setColorGradient(...this.rainbow ? COLOR_DEFAULTS : this.colors)
       .setMidpoint(this.letters.length)
