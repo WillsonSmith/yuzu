@@ -77,7 +77,6 @@ class ColorizeWord extends LitElement {
   }
 
   _gradient() {
-    console.log(this.rainbow, COLOR_DEFAULTS, this.colors);
     return new Gradient()
       .setColorGradient(...this.rainbow ? COLOR_DEFAULTS : this.colors)
       .setMidpoint(this.letters.length)
