@@ -1,6 +1,6 @@
 document.documentElement.setAttribute(
   `data-base-path`,
-  chrome.runtime.getURL(`/dist/vendor/shoelace/dist`)
+  chrome.runtime.getURL(`/dist/vendor/modules/shoelace/dist`)
 );
 
 /** Create Injected Script */

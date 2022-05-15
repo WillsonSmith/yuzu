@@ -6,5 +6,5 @@ import '../shared/web-components/page-header/page-header.js';
 import '../shared/web-components/colorize-word/colorize-word.js';
 
 // Initialization.
-setBasePath(`./assets/vendor/shoelace/dist`);
+setBasePath(`./vendor/shoelace/dist`);
 initializeExtensionScript();
