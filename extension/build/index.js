@@ -51,10 +51,6 @@ const staticConfig = [
     destination: `${distPath}/vendor/modules/shoelace`,
   },
   {
-    location: `${extensionPath}/service-worker.js`,
-    destination: `${distPath}/service-worker.js`,
-  },
-  {
     location: `${extensionPath}/static`,
     destination: `${distPath}/static`,
   },
