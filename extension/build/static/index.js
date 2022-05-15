@@ -1,0 +1,1 @@
+import { copyStatic } from '../util';
