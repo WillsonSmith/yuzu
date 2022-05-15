@@ -20,6 +20,10 @@
     "application:serve": "concurrently \"npm run serve:netlify\" \"npm run application:watch:js\" \"npm run application:watch:css\" \"npm run application:watch:html\" \"npm run application:watch:static\"",
     "application:dev": "npm run application:serve",
     "dev": "npm run application:dev",
+
+    "extension:build": "concurrently \"node extension/build/index.js\"",
+    "extension:watch": "concurrently \"node extension/build/index.js --watch\"",
+
     "application:build": "concurrently \"npm run application:build:js\" \"npm run application:build:css\" \"npm run application:build:html\" \"npm run application:copy:static\"",
     "build:components:library": "",
     "test": "web-test-runner **/tests/*.test.js --config web-dev-server.config.js"
