@@ -4,21 +4,21 @@
   "version": "0.0.1",
   "manifest_version": 3,
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "/background.js"
   },
   "action": {
-    "default_popup": "/dist/index.html"
+    "default_popup": "/index.html"
   },
 
   "content_scripts": [
     {
       "matches": ["https://*.google.com/*"],
-      "css": ["/dist/vendor/modules/shoelace/dist/themes/light.css", "/dist/vendor/modules/shoelace/dist/themes/dark.css"],
+      "css": ["/vendor/modules/shoelace/dist/themes/light.css", "/vendor/modules/shoelace/dist/themes/dark.css"],
       "js": ["page-script.js"]
     }
   ],
   "web_accessible_resources": [{
-    "resources": ["/dist/inject.js", "/dist/vendor/modules/shoelace/dist/*"],
+    "resources": ["/inject.js", "/vendor/modules/shoelace/dist/*"],
     "matches": ["https://*.google.com/*"]
   }],
 

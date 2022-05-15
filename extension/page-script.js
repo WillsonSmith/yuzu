@@ -1,12 +1,12 @@
 document.documentElement.setAttribute(
   `data-base-path`,
-  chrome.runtime.getURL(`/dist/vendor/modules/shoelace/dist`)
+  chrome.runtime.getURL(`/vendor/modules/shoelace/dist`)
 );
 
 /** Create Injected Script */
 const script = document.createElement(`script`);
 script.type = `module`;
-script.src = chrome.runtime.getURL(`/dist/inject.js`);
+script.src = chrome.runtime.getURL(`inject.js`);
 document.body.appendChild(script);
 
 const enabled = [`dark`, `automatic`];

@@ -55,6 +55,10 @@ const staticConfig = [
     destination: `${distPath}/static`,
   },
   {
+    location: `${extensionPath}/manifest.json`,
+    destination: `${distPath}/manifest.json`,
+  },
+  {
     location: `./shared/fonts`,
     destination: `${distPath}/fonts`,
   }
