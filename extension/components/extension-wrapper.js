@@ -2,7 +2,7 @@ import { LitElement, html, css, render } from 'lit';
 
 import '@shoelace-style/shoelace/dist/components/visually-hidden/visually-hidden.js';
 
-import '../components/element-upgrade/element-upgrade.js';
+import './element-upgrade/element-upgrade.js';
 
 class ExtensionWrapper extends LitElement {
   constructor() {
@@ -42,9 +42,7 @@ class ExtensionWrapper extends LitElement {
       subtree: true,
     });
 
-    this.addEventListener('setting-changed', (event) => {
-      console.log(event.detail);
-    });
+    this.addEventListener('setting-changed', (event) => {});
   }
   render() {
     return html` <slot @slotchange=${this._handleSlotChange}></slot> `;

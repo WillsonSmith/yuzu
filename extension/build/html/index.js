@@ -1,7 +1,7 @@
-import { copyStatic } from '../util';
+import { copyStatic } from '../utilities/copyStatic.js';
 
-copyStatic({
-  location: './extension/index.html',
-  destination: './extension/yuzu.ext/index.html',
-  watch: process.argv.includes('--watch'),
-});
+export const buildHtml = (configurations) => {
+  for (const config of configurations) {
+    copyStatic(config);
+  }
+};

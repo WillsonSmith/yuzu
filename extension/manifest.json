@@ -1,0 +1,27 @@
+{
+  "name": "Webcomponent Extensions",
+  "description": "A framework for building Chrome extensions with web components.",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "/dist/index.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://*.google.com/*"],
+      "css": ["/dist/vendor/modules/shoelace/dist/themes/light.css", "/dist/vendor/modules/shoelace/dist/themes/dark.css"],
+      "js": ["page-script.js"]
+    }
+  ],
+  "web_accessible_resources": [{
+    "resources": ["inject.js", "/dist/inject.js"],
+    "matches": ["https://*.google.com/*"]
+  }],
+
+  "permissions": [ "storage", "activeTab", "scripting", "cookies" ],
+  "host_permissions": [ "https://*.google.com/*" ]
+}

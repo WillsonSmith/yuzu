@@ -11,7 +11,6 @@ html *, html *::before, html *::after {
   src: url('/assets/static/fonts/Fredoka-Medium.ttf');
 }
 
-
 body {
   min-width: 400px;
   margin: 0;

@@ -1,0 +1,38 @@
+/* assets/css/main.css */
+html {
+  box-sizing: border-box;
+}
+html *,
+html *::before,
+html *::after {
+  box-sizing: inherit;
+}
+@font-face {
+  font-family: "Fredoka";
+  src: url(/assets/static/fonts/Fredoka-Medium.ttf);
+}
+body {
+  min-width: 400px;
+  margin: 0;
+  font-family: var(--sl-font-sans);
+  font-size: var(--sl-font-size-medium);
+  font-weight: var(--sl-font-weight-normal);
+  letter-spacing: var(--sl-letter-spacing-normal);
+  background-color: var(--sl-color-neutral-0);
+  color: var(--sl-color-neutral-900);
+  line-height: var(--sl-line-height-normal);
+}
+main {
+  padding: var(--sl-spacing-large);
+}
+page-header {
+  --header-title-font-size: var(--sl-font-size-large);
+}
+.extension-description {
+  margin: 0;
+}
+
+/* extension/css/extension.css */
+body {
+  background: blue;
+}
