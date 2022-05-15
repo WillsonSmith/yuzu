@@ -6,3 +6,5 @@ web/
 
 # Local Netlify folder
 .netlify
+
+extension/dist
