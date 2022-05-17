@@ -14,6 +14,7 @@ class PageHeader extends LitElement {
   static get properties() {
     return {
       title: { type: String },
+      githubLink: { type: String, attribute: `github-link` },
       noStars: { type: Boolean, attribute: `no-stars` },
     };
   }
@@ -33,6 +34,7 @@ class PageHeader extends LitElement {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        flex-wrap: wrap;
 
         border-bottom: var(--border-width) solid var(--sl-color-neutral-300);
         padding: var(--sl-spacing-x-small) var(--sl-spacing-small);
@@ -86,17 +88,18 @@ class PageHeader extends LitElement {
   constructor() {
     super();
     this.title = `Page Title`;
+    this.githubLink = `https://github.com/willsonsmith/willsonsmith.com`;
   }
 
   render() {
-    const starSheet = this.noStars ? `` : html`<star-sheet star-density="3"></star-sheet>`;
+    const starSheet = this.noStars ? `` : html`<star-sheet star-density="2"></star-sheet>`;
     return html`
       <header class="header">
         ${starSheet}
         <h1 class="header-title">
           <slot name="title"></slot>
         </h1>
-        <nav class="header-social">
+        <nav class="social">
           <sl-dropdown>
             <sl-button slot="trigger" pill size="small" caret>
               <sl-icon name="moon" label="Select theme"></sl-icon>
@@ -120,7 +123,7 @@ class PageHeader extends LitElement {
             <sl-icon-button
               name="github"
               label="GitHub"
-              href="https://github.com/willsonsmith/willsonsmith.com"
+              href=${this.githubLink}
               target="_blank"
             ></sl-icon-button>
           </sl-tooltip>
