@@ -9,8 +9,7 @@
   ],
   "rules": {
     "semi": ["error", "always"],
-    "quotes": ["error", "backtick"], // I'm a bit of a weirdo
-    "indent": ["error", 2]
+    "quotes": ["error", "backtick"]
   },
   "parserOptions": {
     "ecmaVersion": "latest",
