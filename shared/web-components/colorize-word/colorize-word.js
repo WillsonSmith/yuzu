@@ -3,7 +3,9 @@ import { classMap } from 'lit/directives/class-map.js';
 import {styleMap} from 'lit-html/directives/style-map.js';
 
 import Gradient from 'javascript-color-gradient';
-import {styleVisuallyHidden} from '../sharedStyles/styleVisuallyHidden.js';
+
+import {visuallyHidden, uppercase} from '../_system/util.js';
+import {spacing} from '../_system/tokens/spacing.js';
 
 const COLOR_DEFAULTS = [
   `#e74c3c`,
@@ -26,21 +28,22 @@ class ColorizeWord extends LitElement {
   }
 
   static get styles() {
-    return css`
-      .split-word {
-        display: flex;
-      }
-      .split-word span {
-        text-shadow: 2px 2px var(--color);
-      }
-      .split-word span:not(:first-child) {
-        margin-left: var(--sl-spacing-2x-small);
-      }
-      .uppercase {
-        text-transform: uppercase;
-      }
-      ${styleVisuallyHidden}
-    `;
+    return [
+      spacing,
+      visuallyHidden,
+      uppercase,
+      css`
+        .split-word {
+          display: flex;
+        }
+        .split-word span {
+          text-shadow: 2px 2px var(--color);
+        }
+        .split-word span:not(:first-child) {
+          margin-left: var(--yz-spacing-01);
+        }
+      `
+    ];
   }
 
   constructor() {
