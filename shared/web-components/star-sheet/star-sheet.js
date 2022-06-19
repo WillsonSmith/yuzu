@@ -41,8 +41,8 @@ class StarSheet extends LitElement {
   render() {
     return svg`<svg>
       ${this.stars.map((star) => {
-    return svg`<circle cx="${star.x}" cy="${star.y}" r="${star.radius}" fill="var(--star-color)"></circle>`;
-  })}
+        return svg`<circle cx="${star.x}" cy="${star.y}" r="${star.radius}" fill="var(--star-color)"></circle>`;
+      })}
     </svg>`;
   }
 
@@ -54,7 +54,7 @@ class StarSheet extends LitElement {
       stars.push({
         x: rng.next() * this.offsetWidth,
         y: rng.next() * this.offsetHeight,
-        radius: rng.next() * 5,
+        radius: rng.next() * 4,
       });
     }
     this.stars = stars;
