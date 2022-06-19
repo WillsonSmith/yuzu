@@ -1,11 +1,11 @@
-import { LitElement, html, css } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
-import {styleMap} from 'lit-html/directives/style-map.js';
+import { LitElement, html, css } from "lit";
+import { classMap } from "lit/directives/class-map.js";
+import { styleMap } from "lit-html/directives/style-map.js";
 
-import Gradient from 'javascript-color-gradient';
+import Gradient from "javascript-color-gradient";
 
-import {visuallyHidden, uppercase} from '../_system/util.js';
-import {spacing} from '../_system/tokens/spacing.js';
+import { visuallyHidden } from "../_system/util.js";
+import { spacing } from "../_system/tokens/spacing.js";
 
 const COLOR_DEFAULTS = [
   `#e74c3c`,
@@ -31,7 +31,6 @@ class ColorizeWord extends LitElement {
     return [
       spacing,
       visuallyHidden,
-      uppercase,
       css`
         .split-word {
           display: flex;
@@ -42,7 +41,11 @@ class ColorizeWord extends LitElement {
         .split-word span:not(:first-child) {
           margin-left: var(--yz-spacing-01);
         }
-      `
+
+        .uppercase {
+          text-transform: uppercase;
+        }
+      `,
     ];
   }
 
@@ -64,13 +67,15 @@ class ColorizeWord extends LitElement {
 
   render() {
     const splitWordClasses = classMap({
-      'split-word': true,
+      "split-word": true,
       uppercase: this.uppercase,
     });
 
     const splitWord = this.letters.map((letter, index) => {
       const color = this.colors[index];
-      return html`<span style=${styleMap({'--color': color})}>${letter}</span>`;
+      return html`<span style=${styleMap({ "--color": color })}
+        >${letter}</span
+      >`;
     });
 
     return html`
@@ -85,7 +90,7 @@ class ColorizeWord extends LitElement {
 
   _gradient() {
     return new Gradient()
-      .setColorGradient(...this.rainbow ? COLOR_DEFAULTS : this.colors)
+      .setColorGradient(...(this.rainbow ? COLOR_DEFAULTS : this.colors))
       .setMidpoint(this.letters.length)
       .getColors();
   }

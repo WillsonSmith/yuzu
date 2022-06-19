@@ -1,11 +1,5 @@
 import {css} from 'lit';
 
-export const uppercase = css`
-  .uppercase {
-    text-transform: uppercase;
-  }
-`;
-
 export const visuallyHidden = css`
   .visually-hidden {
     border: 0;
