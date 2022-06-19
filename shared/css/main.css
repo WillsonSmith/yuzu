@@ -13,27 +13,31 @@ html *, html *::before, html *::after {
 
 
 body {
+  background-color: var(--sl-color-neutral-0);
+  color: var(--sl-color-neutral-900);
   margin: 0;
   font-family: var(--sl-font-sans);
   font-size: var(--sl-font-size-medium);
   font-weight: var(--sl-font-weight-normal);
-  letter-spacing: var(--sl-letter-spacing-normal);
-  background-color: var(--sl-color-neutral-0);
-  color: var(--sl-color-neutral-900);
   line-height: var(--sl-line-height-normal);
+  letter-spacing: var(--sl-letter-spacing-normal);
 }
 
 main {
   padding: var(--sl-spacing-large);
 }
 
-page-header a {
+page-header::part(star-sheet) {
+  --star-color: var(--sl-color-neutral-900);
+}
+
+.page-header-link {
+  color: var(--sl-color-neutral-900);
   margin: 0;
   font-family: 'Fredoka', var(--sl-font-sans);
   font-size: var(--sl-font-size-2x-large);
-  line-height: var(--sl-line-height-normal);
   font-weight: var(--sl-font-weight-semibold);
-  color: var(--sl-color-neutral-900);
+  line-height: var(--sl-line-height-normal);
   text-decoration: none;
 }
 
