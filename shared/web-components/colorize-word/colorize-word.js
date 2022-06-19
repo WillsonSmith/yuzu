@@ -2,11 +2,10 @@ import { LitElement, html, css } from "lit";
 import { classMap } from "lit/directives/class-map.js";
 import { styleMap } from "lit-html/directives/style-map.js";
 
-import Gradient from "javascript-color-gradient";
-
 import { visuallyHidden } from "../_system/util.js";
 import { spacing } from "../_system/tokens/spacing.js";
 
+import Gradient from "javascript-color-gradient";
 const COLOR_DEFAULTS = [
   `#e74c3c`,
   `#e67e22`,
