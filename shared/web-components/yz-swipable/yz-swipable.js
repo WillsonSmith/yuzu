@@ -6,6 +6,7 @@ class Swipable extends LitElement {
   static properties = {
     pages: { type: Number },
     activePage: { type: Number },
+    indicator: { type: Boolean },
   };
 
   static styles = [
@@ -67,13 +68,15 @@ class Swipable extends LitElement {
     super();
     this.pages = 0;
     this.activePage = 0;
+    this.indicator = true;
   }
 
   render() {
     return html`
       <div class="container" @scroll=${this.handleScroll}>
         <slot @slotchange=${this.handleSlotChange}></slot>
-        <div class="page-indicator">
+        ${this.indicator
+          ? html`<div class="page-indicator">
           ${Array.from({ length: this.pages }, (_, i) => {
             return html`
               <div
@@ -85,6 +88,8 @@ class Swipable extends LitElement {
             `;
           })}
         </div>
+      </div>`
+          : ``}
       </div>
     `;
   }
