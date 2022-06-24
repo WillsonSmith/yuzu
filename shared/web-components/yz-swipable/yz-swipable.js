@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit";
 import { classMap } from "lit/directives/class-map.js";
 import { spacing } from "../_system/tokens/spacing";
 
-class SwipablePageContainer extends LitElement {
+class Swipable extends LitElement {
   static properties = {
     pages: { type: Number },
     activePage: { type: Number },
@@ -112,5 +112,5 @@ class SwipablePageContainer extends LitElement {
   }
 }
 
-customElements.define(`yz-swipable-page-container`, SwipablePageContainer);
+customElements.define(`yz-swipable`, Swipable);
 import(`./components/yz-swipable-page.js`);
