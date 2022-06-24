@@ -74,7 +74,7 @@ class Swipable extends LitElement {
     return html`
       <div class="container" @scroll=${this.handleScroll}>
         <slot @slotchange=${this.handleSlotChange}></slot>
-        ${this.indicator
+        ${this.indicator && this.pages > 1
           ? html`<div class="page-indicator">
           ${Array.from({ length: this.pages }, (_, i) => {
             return html`
