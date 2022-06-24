@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit";
-import { styleMap } from "lit-html/directives/style-map.js";
+import { styleMap } from "lit/directives/style-map.js";
 
 class YZBlockCard extends LitElement {
   static get properties() {
