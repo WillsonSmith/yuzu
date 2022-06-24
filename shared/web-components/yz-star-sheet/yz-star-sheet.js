@@ -62,7 +62,7 @@ class StarSheet extends LitElement {
     });
   }
 }
-customElements.define(`star-sheet`, StarSheet);
+customElements.define(`yz-star-sheet`, StarSheet);
 
 function* seededPseudoRandom(initial) {
   let seed = initial % 2147483647;

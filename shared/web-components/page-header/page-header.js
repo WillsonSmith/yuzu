@@ -9,7 +9,7 @@ import "@shoelace-style/shoelace/dist/components/button/button.js";
 import "@shoelace-style/shoelace/dist/components/menu/menu.js";
 import "@shoelace-style/shoelace/dist/components/menu-item/menu-item.js";
 
-import "../star-sheet/star-sheet.js";
+import "../yz-star-sheet/yz-star-sheet.js";
 
 class PageHeader extends LitElement {
   static get properties() {
@@ -66,7 +66,7 @@ class PageHeader extends LitElement {
         font-family: "Fredoka", var(--sl-font-sans);
       }
 
-      star-sheet {
+      yz-star-sheet {
         position: absolute;
         top: 0;
         right: 0;
@@ -95,7 +95,10 @@ class PageHeader extends LitElement {
   render() {
     const starSheet = this.noStars
       ? ``
-      : html`<star-sheet star-density="2" part="star-sheet"></star-sheet>`;
+      : html`<yz-star-sheet
+          star-density="2"
+          part="star-sheet"
+        ></yz-star-sheet>`;
     return html`
       <header class="header">
         ${starSheet}
