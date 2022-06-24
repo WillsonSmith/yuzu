@@ -68,7 +68,6 @@ class Swipable extends LitElement {
     super();
     this.pages = 0;
     this.activePage = 0;
-    this.indicator = true;
   }
 
   render() {
