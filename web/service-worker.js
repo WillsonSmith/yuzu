@@ -4,7 +4,6 @@
 
 const filesToCache = [
   `/`,
-  `index.html`,
   `assets/css/main.css`,
   `assets/js/index.js`,
   `assets/static/icon.png`,
