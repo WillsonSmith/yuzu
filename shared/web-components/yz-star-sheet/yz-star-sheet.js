@@ -11,6 +11,7 @@ class StarSheet extends LitElement {
     return css`
       :host {
         --star-color: #fff;
+        display: block;
       }
       svg {
         width: 100%;

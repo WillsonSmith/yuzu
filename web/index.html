@@ -22,13 +22,13 @@
 
     <script type="module">
       const root = document.documentElement;
-      const theme = localStorage.getItem('preferred-theme') || 'automatic';
+      const theme = localStorage.getItem("preferred-theme") || "automatic";
       let dark = false;
-      if (theme === 'dark') dark = true;
-      if (theme === 'automatic') {
-        dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (theme === "dark") dark = true;
+      if (theme === "automatic") {
+        dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       }
-      document.documentElement.classList.toggle('sl-theme-dark', dark);
+      document.documentElement.classList.toggle("sl-theme-dark", dark);
     </script>
   </head>
 
@@ -48,16 +48,16 @@
 
     <script type="module" src="/javascript/(._.).js"></script>
     <script>
-      const header = document.querySelector('page-header');
-      header.addEventListener('theme-change', (event) => {
+      const header = document.querySelector("page-header");
+      header.addEventListener("theme-change", (event) => {
         const theme = event.detail.theme;
-        localStorage.setItem('preferred-theme', theme);
+        localStorage.setItem("preferred-theme", theme);
         let dark = false;
-        if (theme === 'dark') dark = true;
-        if (theme === 'automatic') {
-          dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (theme === "dark") dark = true;
+        if (theme === "automatic") {
+          dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
         }
-        document.documentElement.classList.toggle('sl-theme-dark', dark);
+        document.documentElement.classList.toggle("sl-theme-dark", dark);
       });
     </script>
 
