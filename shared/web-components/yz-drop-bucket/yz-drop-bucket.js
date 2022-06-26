@@ -43,12 +43,6 @@ class DropBucket extends LitElement {
     this.dispatchEvent(yzDropEvent);
   }
 
-  handleDrop(event) {
-    stopEvent(event);
-    this.emit(event);
-    this.resetAttributes();
-  }
-
   resetAttributes = () => this.updateAttributes();
   updateAttributes(updates = {}) {
     const defaultAttributes = {

@@ -23,14 +23,21 @@ class GridItem extends LitElement {
     `,
   ];
 
+  constructor() {
+    super();
+    this.rows = undefined;
+    this.columns = undefined;
+    this.order = undefined;
+  }
+
   render() {
     return html`
       <div
         class="grid-item"
         style=${styleMap({
-          "--column-end": this.columns ? `span ${this.columns}` : undefined,
+          "--order": this.order ?? undefined,
           "--row-end": this.rows ? `span ${this.rows}` : undefined,
-          "--order": this.order ? `${this.order}` : undefined,
+          "--column-end": this.columns ? `span ${this.columns}` : undefined,
         })}
       >
         <slot></slot>

@@ -21,16 +21,18 @@ main sl-card h2 {
   height: 100%;
 }
 
+
 .grid-preview-image img {
   display: block;
   width: 100%;
+  height: 100%;
   object-fit: cover;
+  border-radius: 8px;
 }
 
-yz-grid-item .grid-preview-image {
-  background: blue;
-
-  border: 1px solid #000;
+.grid-preview-image {
+  border-radius: 8px;
+  overflow: hidden;
   box-sizing: border-box;
 }
 

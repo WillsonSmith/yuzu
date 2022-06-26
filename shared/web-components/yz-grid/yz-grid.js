@@ -22,6 +22,13 @@ class Grid extends LitElement {
     `,
   ];
 
+  constructor() {
+    super();
+    this.rows = undefined;
+    this.columns = undefined;
+    this.gap = undefined;
+  }
+
   render() {
     return html`
       <div
