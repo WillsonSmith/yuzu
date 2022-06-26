@@ -13,6 +13,8 @@ class Swipable extends LitElement {
     spacing,
     css`
       :host {
+        --indicator-item-border: none;
+        --indicator-item-active-border: none;
         --indicator-space-between: var(--yz-spacing-01);
         --indicator-space-below: var(--yz-spacing-01);
         --indicator-item-size: var(--yz-spacing-02);
@@ -35,6 +37,7 @@ class Swipable extends LitElement {
       .page-indicator {
         display: flex;
         justify-content: center;
+        align-items: center;
 
         position: fixed;
         left: 0;
@@ -45,15 +48,17 @@ class Swipable extends LitElement {
       .page-indicator-item {
         --opacity: 0.5;
         background: var(--indicator-color);
+        border: var(--indicator-item-border);
         border-radius: 50%;
         backdrop-filter: blur(10px);
         opacity: var(--opacity);
-        width: 8px;
-        height: 8px;
+        width: var(--indicator-item-size);
+        height: var(--indicator-item-size);
         margin-left: var(--indicator-space-between);
       }
       .page-indicator-item-active {
         --opacity: 1;
+        border: var(--indicator-item-active-border);
       }
 
       ::slotted(yz-swipable-page) {
@@ -68,6 +73,7 @@ class Swipable extends LitElement {
     super();
     this.pages = 0;
     this.activePage = 0;
+    this.indicator = false;
   }
 
   render() {
