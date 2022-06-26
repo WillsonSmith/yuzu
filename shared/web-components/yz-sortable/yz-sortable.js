@@ -17,47 +17,78 @@ class Sortable extends LitElement {
       node.addEventListener(`dragend`, this.handleDragEnd);
       node.setAttribute(`draggable`, `true`);
     }
+
+    this.addEventListener(`drop`, this.handleDrop);
   }
 
   render() {
-    return html` <slot></slot> `;
+    return html` <slot @slotchange=${this.handleSlotChange}></slot> `;
   }
 
-  slotChange() {
+  handleSlotChange() {
     this.sortableNodes = Array.from(this.children);
     for (const node of this.sortableNodes) {
-      node.addEventListener(`dragstart`, this.handleDragStart);
-      node.addEventListener(`dragend`, this.handleDragEnd);
-
-      node.setAttribute(`draggable`, `true`);
-      console.log(node.firstChild);
-      node.firstChild.setAttribute(`draggable`, `false`);
-
-      node.removeEventListener(`dragover`, this.handleDragEnter);
-      node.addEventListener(`dragover`, this.handleDragEnter);
+      this.resetNode(node);
+      this.setupNode(node);
     }
   }
 
-  handleDragEnter(event) {
-    console.log(`drag-enter`);
-    console.log(event);
+  resetNode(node) {
+    node.removeEventListener(`dragstart`, this.handleDragStart);
+    node.removeEventListener(`dragend`, this.handleDragEnd);
+    node.removeEventListener(`dragenter`, this.handleDragEnter);
+
+    let sortableChildren = Array.from(node.querySelectorAll(`*`));
+    sortableChildren = nestedChildren(sortableChildren);
+    for (const child of sortableChildren) {
+      child.removeAttribute(`draggable`);
+    }
+
+    node.removeAttribute(`draggable`);
   }
 
+  setupNode(node) {
+    node.setAttribute(`draggable`, `true`);
+    let sortableChildren = Array.from(node.querySelectorAll(`*`));
+    sortableChildren = nestedChildren(sortableChildren);
+    for (const child of sortableChildren) {
+      child.setAttribute(`draggable`, `false`);
+    }
+    node.addEventListener(`drop`, this.handleDrop);
+    node.addEventListener(`dragstart`, this.handleDragStart);
+    node.addEventListener(`dragenter`, this.handleDragEnter);
+    node.addEventListener(`dragend`, this.handleDragEnd);
+  }
+
+  handleDragEnter(event) {}
+
   handleDragStart(event) {
-    console.log(`drag-start`);
     this.dragging = true;
     event.dataTransfer.setData(
       `text/plain`,
       event.target.style.getPropertyValue(`--order`)
     );
-    console.log(event.target);
-    console.log(event.target.style.getPropertyValue(`--order`));
+    // console.log(event.target.style.getPropertyValue(`--order`));
   }
-  handleDragEnd() {
-    console.log(`drag-end`);
 
+  handleDrop(event) {
+    console.log(`drop`, event.target);
+    console.log(event.dataTransfer.getData(`text/plain`));
+  }
+
+  // if you drop and aren't over something, animate it back to position
+  handleDragEnd(event) {
     this.dragging = false;
   }
 }
 
 customElements.define(`yz-sortable`, Sortable);
+
+/** Utilities */
+function nestedChildren(node) {
+  const first = node.firstElementChild;
+  if (first) {
+    return Array.from(first.querySelectorAll(`*`));
+  }
+  return [];
+}

@@ -1,4 +1,4 @@
-import { build as esbuild } from 'esbuild';
+import { build as esbuild } from "esbuild";
 function build({ location, destination, watch, minify }) {
   esbuild({
     bundle: true,
@@ -7,6 +7,7 @@ function build({ location, destination, watch, minify }) {
     minify,
     outfile: destination,
     watch,
+    sourcemap: watch,
   });
 }
 
