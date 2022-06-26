@@ -10,56 +10,80 @@
 
     <link rel="apple-touch-icon" href="/static/icon.png" />
     <link rel="icon" type="image/png" href="/static/icon.png" />
-    <link
-      rel="stylesheet"
-      href="/vendor/modules/shoelace/dist/themes/light.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/vendor/modules/shoelace/dist/themes/dark.css"
-    />
     <link rel="stylesheet" href="/css/main.css" />
-
-    <script type="module">
-      const root = document.documentElement;
-      const theme = localStorage.getItem("preferred-theme") || "automatic";
-      let dark = false;
-      if (theme === "dark") dark = true;
-      if (theme === "automatic") {
-        dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      }
-      document.documentElement.classList.toggle("sl-theme-dark", dark);
-    </script>
   </head>
 
   <body>
-    <page-header>
-      <a class="page-header-link" href="/" slot="title">
-        <colorize-word rainbow>Template</colorize-word>
-      </a>
-    </page-header>
-
     <main>
-      <sl-card>
-        <h2 slot="header">Project template</h2>
-        A template for front-end web applications.
-      </sl-card>
+      <div class="nook-phone-time">17:32</div>
+      <yz-swipable indicator>
+        <yz-swipable-page>
+          <yz-grid columns="3" gap="4">
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+          </yz-grid>
+        </yz-swipable-page>
+
+        <yz-swipable-page>
+          <yz-grid columns="3" gap="4">
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+            <yz-grid-item>
+              <div class="nook-phone-icon"></div>
+            </yz-grid-item>
+          </yz-grid>
+        </yz-swipable-page>
+      </yz-swipable>
     </main>
 
     <script type="module" src="/javascript/(._.).js"></script>
-    <script>
-      const header = document.querySelector("page-header");
-      header.addEventListener("theme-change", (event) => {
-        const theme = event.detail.theme;
-        localStorage.setItem("preferred-theme", theme);
-        let dark = false;
-        if (theme === "dark") dark = true;
-        if (theme === "automatic") {
-          dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        }
-        document.documentElement.classList.toggle("sl-theme-dark", dark);
-      });
-    </script>
 
     <!-- Add a Service Worker -->
     <!-- <script type="text/javascript">
