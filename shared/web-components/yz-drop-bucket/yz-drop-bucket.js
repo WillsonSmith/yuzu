@@ -17,23 +17,18 @@ class DropBucket extends LitElement {
   }
 
   firstUpdated() {
-    this.addEventListener(`dragenter`, this.handleEvent(`dragenter`));
-    this.addEventListener(`dragover`, this.handleEvent(`dragover`));
-    this.addEventListener(`dragleave`, this.handleEvent(`dragleave`));
-    this.addEventListener(`drop`, this.handleEvent(`drop`));
+    this.addEventListener(`dragenter`, this.handleEvent);
+    this.addEventListener(`dragover`, this.handleEvent);
+    this.addEventListener(`dragleave`, this.handleEvent);
+    this.addEventListener(`drop`, this.handleEvent);
   }
 
-  handleEvent(eventName) {
-    return (event) => {
-      if ([`dragenter`, `dragover`].includes(event.type)) {
-        event.preventDefault();
-      }
-      if (event.type === `drop`) {
-        event.preventDefault();
-        this.emit(event);
-      }
-      this.updateAttributes(attributesToToggle(eventName));
-    };
+  handleEvent(event) {
+    if ([`dragenter`, `dragover`, `drop`].includes(event.type)) {
+      event.preventDefault();
+    }
+    this.updateAttributes(attributesToToggle(event.type));
+    if (event.type === `drop`) this.emit(event);
   }
 
   render() {
@@ -75,32 +70,13 @@ class DropBucket extends LitElement {
 }
 
 function attributesToToggle(eventType) {
-  switch (eventType) {
-    case `dragenter`:
-      return {
-        dragOver: true,
-        dragEnter: true,
-      };
-    case `dragover`:
-      return {
-        dragOver: true,
-        dragEnter: true,
-      };
-    case `dragleave`:
-      return {
-        dragLeave: true,
-      };
-    case `drop`:
-      return {};
-    default:
-      return {};
-  }
-}
-
-/** Utilities */
-function stopEvent(event) {
-  event.preventDefault();
-  event.stopPropagation();
+  return (
+    {
+      dragenter: { dragEnter: true, dragOver: true },
+      dragover: { dragEnter: true, dragOver: true },
+      dragleave: { dragLeave: true },
+    }[eventType] || {}
+  );
 }
 
 customElements.define(`yz-drop-bucket`, DropBucket);
