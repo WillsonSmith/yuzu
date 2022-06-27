@@ -3,24 +3,35 @@ import { LitElement, html } from "lit";
 class DropBucket extends LitElement {
   static properties = {
     customEvent: { attribute: `custom-event`, type: String },
+    dragEnter: { attribute: `drag-enter`, type: Boolean, reflect: true },
+    dragOver: { attribute: `drag-over`, type: Boolean, reflect: true },
+    dragLeave: { attribute: `drag-leave`, type: Boolean, reflect: true },
   };
 
   constructor() {
     super();
     this.customEvent = undefined;
+    this.dragEnter = false;
+    this.dragOver = false;
+    this.dragLeave = false;
   }
 
   firstUpdated() {
-    this.addEventListener(`dragover`, this.handleEvent(`dragover`));
     this.addEventListener(`dragenter`, this.handleEvent(`dragenter`));
+    this.addEventListener(`dragover`, this.handleEvent(`dragover`));
     this.addEventListener(`dragleave`, this.handleEvent(`dragleave`));
     this.addEventListener(`drop`, this.handleEvent(`drop`));
   }
 
   handleEvent(eventName) {
     return (event) => {
-      event.preventDefault();
-      event.stopPropagation();
+      if ([`dragenter`, `dragover`].includes(event.type)) {
+        event.preventDefault();
+      }
+      if (event.type === `drop`) {
+        event.preventDefault();
+        this.emit(event);
+      }
       this.updateAttributes(attributesToToggle(eventName));
     };
   }
@@ -46,8 +57,8 @@ class DropBucket extends LitElement {
   resetAttributes = () => this.updateAttributes();
   updateAttributes(updates = {}) {
     const defaultAttributes = {
-      dragOver: false,
       dragEnter: false,
+      dragOver: false,
       dragLeave: false,
     };
 
@@ -56,43 +67,31 @@ class DropBucket extends LitElement {
       ...updates,
     };
 
-    for (const [attribute, attributeEnabled] of Object.entries(
-      toggledAttributes
-    )) {
-      this.removeAttribute(attribute);
-      if (attributeEnabled) {
-        this.setAttribute(attribute, attribute);
-      }
+    const entries = Object.entries(toggledAttributes);
+    for (const [attribute, enabled] of entries) {
+      this[attribute] = enabled;
     }
   }
 }
 
-function attributesToToggle(event) {
-  switch (event.type) {
-    case `dragover`:
-      return {
-        dragOver: true,
-        dragEnter: true,
-        dragLeave: false,
-      };
+function attributesToToggle(eventType) {
+  switch (eventType) {
     case `dragenter`:
       return {
         dragOver: true,
         dragEnter: true,
-        dragLeave: false,
+      };
+    case `dragover`:
+      return {
+        dragOver: true,
+        dragEnter: true,
       };
     case `dragleave`:
       return {
-        dragOver: false,
-        dragEnter: false,
         dragLeave: true,
       };
     case `drop`:
-      return {
-        dragOver: false,
-        dragEnter: false,
-        dragLeave: false,
-      };
+      return {};
     default:
       return {};
   }
