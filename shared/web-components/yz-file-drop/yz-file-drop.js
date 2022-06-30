@@ -1,6 +1,6 @@
 import { LitElement, html } from "lit";
 
-class DropBucket extends LitElement {
+class FileDrop extends LitElement {
   static properties = {
     customEvent: { attribute: `custom-event`, type: String },
     dragEnter: { attribute: `drag-enter`, type: Boolean, reflect: true },
@@ -79,4 +79,4 @@ function attributesToToggle(eventType) {
   );
 }
 
-customElements.define(`yz-drop-bucket`, DropBucket);
+customElements.define(`yz-file-drop`, FileDrop);
