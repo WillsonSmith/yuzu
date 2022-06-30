@@ -28,7 +28,7 @@ class FileDrop extends LitElement {
       event.preventDefault();
     }
     this.updateAttributes(attributesToToggle(event.type));
-    if (event.type === `drop`) this.emit(event);
+    if (event.type === `drop`) this.dispatchFileDropEvent(event);
   }
 
   render() {
@@ -40,10 +40,12 @@ class FileDrop extends LitElement {
     else return `yz-evt-drop`;
   }
 
-  emit(event) {
+  dispatchFileDropEvent(event) {
+    const files = Array.from(event.dataTransfer?.files);
+    if (!files) return;
     const yzDropEvent = new CustomEvent(this.event, {
       detail: {
-        event,
+        files,
       },
     });
     this.dispatchEvent(yzDropEvent);
