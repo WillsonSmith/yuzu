@@ -1,11 +1,6 @@
 import { LitElement } from "lit";
 import { html } from "lit/static-html.js";
 
-/*
- * A component that listens for load events and caches the resources it loads.
- * Utilize service workers to cache the resources.
- * Needs to have a way to clear the cache.
- */
 class AssetCache extends LitElement {
   staticCacheName = `yz-asset-cache-v1`;
   cache = `images`;
@@ -48,9 +43,8 @@ class AssetCache extends LitElement {
   handleAssetLoad = (event) => {
     let source = ``;
     if (event.detail) source = event.detail.src;
-    if (event.target.src) {
-      this.cacheAsset(event.target.src);
-    }
+    if (event.target.src) source = event.target.src;
+    this.cacheAsset(source);
   };
 
   cacheAsset(url) {
